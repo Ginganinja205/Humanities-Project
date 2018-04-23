@@ -1,7 +1,7 @@
 #Opening Screen Credits and Stuff Here
 def beginningcode(wronginputmssg):
     while True:
-        playorexit = input("Welcome Participant\n Please type '1' to start, '2' to exit, '3' for How To Play, or '4' for credits. Press 'Enter' when you have selected your choice.\n 1. Start\n 2. Exit\n 3. How To Play\n 4. Credits/Citations\n")
+        playorexit = input("\nWelcome Participant\n Please type '1' to start, '2' to exit, '3' for How To Play, or '4' for credits. Press 'Enter' when you have selected your choice.\n 1. Start\n 2. Exit\n 3. How To Play\n 4. Credits/Citations\n")
         try:
             choice1 = int(playorexit)
         except:
@@ -39,6 +39,7 @@ def inputtemplate(message, numberortext, numberofoptions):
             thenumberinput = int(theinput)
         except:
             print(str('Please type one of the numbers listed.\n'))
+            return
         if numberofoptions < thenumberinput or thenumberinput < 1:
             print(str('Please type one of the numbers listed.\n'))
         else:
@@ -85,16 +86,20 @@ def marketplaceChina(C, s, sw, p, stc, bc, username):
 def markettrans(product, price, amountotal, Cns):
     while True:
         unitsofs = inputtemplate(f"How many {product} would you like to buy? You may purchase up to 100 units of something at a time. If you wish to exit, buy 101 units (this is equivalent to buying 0 units). The price per unit is {price} coins.\n", 0, 101)
-        if unitsofs == 101: break
-        elif Cns >= price * unitsofs:
+        if unitsofs != None:
+            if unitsofs == 101:
+                amountotal = amountotal + 0
+                Cns = Cns - (price * 0)
+                return amountotal, Cns
+            elif Cns >= price * unitsofs:
                 amountotal = amountotal + unitsofs
                 Cns = Cns - (price * unitsofs)
                 return amountotal, Cns
-        else:
-            print("You can't afford that!!")
+            else:
+                print("You can't afford that!!")
 
 def beginjourney(uname):
-    inputtemplate()
+    waterorland = inputtemplate("\nYou can get to Alexandria by land or by sea. Along the way, you will need to buy food in other countries. If you go by sea, you will not need to make as many stops or buy as much food as you would if you went by land. However, some of your products will be slightly", 0, 2)
 
 def main():
     wronginputmessage = str('Please type one of the numbers listed.\n')
