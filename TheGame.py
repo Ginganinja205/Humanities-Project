@@ -49,7 +49,7 @@ def inputtemplate(message, numberortext, numberofoptions):
 
 #Username, Establishes Base Products Currency, Leads to Market or Cont.s to Journey
 def startingpage():
-    namemssg = str("\nHello user! You have been raised as a merchant in Luoyang, a town in Ancient China (for the intent of this game Ancient refers to a period from 400 BC to 1 BC). Your father has recently decided that it is time for you to attempt a practical execution of your knowledge. You will journey to Alexandria, Egypt with a small company of guards and servants to look after you and your wealth. Your scholar Amil Yrneh will go with you and act as guide. At the start of your journey, you will take some of your father's money and buy some goods and commodities to trade with along the way. China was one of the first nations to have government minted coinage, and this use of official currency bolstered their economy and created growth in the middle class. Your father gives you your spending money in the form of this coinage. However, before we can continue please type your name:  \n")
+    namemssg = str("\nHello user! You have been raised as a merchant in Luoyang, a town in Ancient China (for the intent of this game Ancient refers to a period from 400 BC to 1 BC). Your father has recently decided that it is time for you to attempt a practical execution of your knowledge. You will journey to Alexandria, Egypt with a small company of guards and servants to look after you and your wealth. Your scholar Amil Yrneh will go with you and act as guide. At the start of your journey, you will take some of your father's money and buy some goods and commodities to trade with along the way. China was one of the first nations to have government minted coinage, and this use of official currency bolstered their economy and created growth in the middle class. Your father gives you your spending money in the form of this coinage. However, before we can continue please type your name:\n")
     theusername = inputtemplate(namemssg, 1, 1)
     Coins = 5000
     silk = 0
@@ -77,7 +77,7 @@ def marketplaceChina(C, s, sw, p, stc, bc, username):
             bc, C = markettrans('brass products', 60, bc, C)
         elif cmarketopening == 6:
             print("\nHello, I am Amil Yrneh, your guide.\n 1. Silk and Silkworms - China was the first civilization to discover how to create silk. Silk is created by silkworms when they form a cocoon. The cocoon can then be boiled, pulled of the worm, and spun into silk. However, it takes thousands of worms to make just a pound of silk. Since China is the only one who knows how to make it, it is literally worth its weight in gold in foreign civilizations. The farther away you go the more valuable it gets (due to its increased scarcity). Since no one else knows the secret to silk, the selling of silkworms to foreigners is punishable by death. However, if you managed to do it secretly, you would be the richest man in China!\n 2. Pearls - The Chinese were also the first to farm pearls. Their scarcity in foreign nations make them valuable, but they serve little practical purpose other than decoration. Their value will also go up the farther you are from China, but not as steeply.")
-            print(" 3. Steel Products - China was also amongst the first to smelt iron into steel. Steel is much stronger than iron and is ideal for tools of war. Peaceful foreigners will not want to pay such high prices for weaponry even if its are superior to their current stock. However, cities and towns with a strong military presence will definitely snap them up.\n 4. Brass Products - Brass is an alloy of copper, zinc, and lead, all of which China has large quantities of. It is mostly used for ornamentation, and it is a nice fallback to trade with in foreign nations if you want to save other products for later.\n 5. Food - In China, you will never go hungry. China has no shortage of food, due to their advanced farming techniques. This includes mixed stock rearing (a technique involving raising multiple agricultural lifeforms to increase efficiency), and puddling (tiered pools used to keep rice hydrated). However, in other civilizations you will want to buy food (to survive).\n\n")
+            print(" 3. Steel Products - China was also amongst the first to smelt iron into steel. Steel is much stronger than iron and is ideal for tools of war. Peaceful foreigners will not want to pay such high prices for weaponry, even if its are superior to their current stock. However, cities and towns with a strong military presence will definitely snap them up.\n 4. Brass Products - Brass is an alloy of copper, zinc, and lead, all of which China has large quantities of. It is mostly used for ornamentation, and it is a nice fallback to trade with in foreign nations if you want to save other products for later.\n 5. Food - In China, you will never go hungry. China has no shortage of food, due to their advanced farming techniques. This includes mixed stock rearing (a technique involving raising multiple agricultural lifeforms to increase efficiency), and puddling (tiered pools used to keep rice hydrated). However, in other civilizations you will want to buy food (to survive).\n\n")
         elif cmarketopening == 7: break
         elif cmarketopening == 8:
             exit()
@@ -98,8 +98,29 @@ def markettrans(product, price, amountotal, Cns):
             else:
                 print("You can't afford that!!")
 
+#By land or sea
 def beginjourney(uname):
-    waterorland = inputtemplate("\nYou can get to Alexandria by land or by sea. Along the way, you will need to buy food in other countries. If you go by sea, you will not need to make as many stops or buy as much food as you would if you went by land. However, some of your products will be slightly", 0, 2)
+    waterorland = inputtemplate("\nYou can get to Alexandria by land or by sea. Along the way, you will need to buy food in other countries. If you go by sea, you will not need to make as many stops or buy as much food as you would if you went by land. However, some of your merchandise will run the risk of damage.\n 1. Land\n 2. Sea\n", 0, 2)
+    return waterorland
+
+#Last stop in China by water
+def nanhal(noic, klis, mrowklis, lreap, leets, ssarb, eman):
+    while True:
+        leavechinamessage = str(f"\n Your barge travels swiftly, it isn't long before you have reached Nanhal, you last stop in China. This is your last stop in China. Before you leave China {theusername}, you may wish to stop by the marketplace to stock up on goods and commodities. You may also leave China immediately.\n 1. Marketplace\n 2. Leave China\n 3. Exit\n")
+        marketorleave = inputtemplate(leavechinamessage, 0, 3)
+        if marketorleave == 1:
+            noic, klis, mrowklis, lreap, leets, ssarb = marketplaceChina(noic, klis, mrowklis, lreap, leets, ssarb, eman)
+        elif marketorleave == 2:
+            if mroklis > 0:
+                print("It looks like someone thought that crime pays. Unfortunately (for you), you have been caught in an attempt to smuggle silkworms to foriengers. You were willing to betray your entire country just to make an extra buck. If this is a surpruise to you, you should have checked the extra information in the marketplace. Tough luck, Goodbye.")
+                exit()
+            else:
+                return noic, klis, mrowklis, lreap, leets, ssarb
+                break
+        elif marketorleave == 3:
+            exit()
+def xian():
+    
 
 def main():
     wronginputmessage = str('Please type one of the numbers listed.\n')
@@ -110,6 +131,11 @@ def main():
     elif answer22ndq == 3:
         exit()
     answer23rdq = beginjourney(name)
+    if answer23rdq == 1:
+        coins, sil, silkworm, pearl, steelcraft, brasscraft = xian(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
+        coins, sil, silkworm, pearl, steelcraft, brasscraft = lanzhou(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
+    elif answer23rdq == 2:
+        coins, sil, silkworm, pearl, steelcraft, brasscraft = nanhal(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
     return
 
 if __name__ == '__main__':
