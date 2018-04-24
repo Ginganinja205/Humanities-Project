@@ -23,7 +23,7 @@ def beginningcode(wronginputmssg):
 #Gives User Initial Guidance
 def Instructions(wronginput):
     while True:
-        howtoplay = input("\nBy selecting this you are already on the right track. Your goal is to try and make the character you select as profitable as possible, and my goal is to try to teach you about the economies of Ancient Civilizations. Throughout this interactive teaching program you will be asked to make multiple decisions, some small some large, in order to achieve your goal. Along the way, you may encounter things that you are unfamiliar with, or decisions you feel unable to make. If this happens, there should be an option to give you more information. Select this, read through the given information, and try again. (DISCLAIMER: Some elements of this game are ficticious and non-factual. Most inconsistencies will be concerning chronology) Type the number corresponding to your answer then press 'Enter'. If you still have problems, please call me (Henry Lima) over. Thank you. (Press the 'SpaceBar' then 'Enter' to continue.)")
+        howtoplay = input("\nBy selecting this you are already on the right track. Your goal is to try and make the character you select as profitable as possible, and my goal is to try to teach you about the economies of Ancient Civilizations. Throughout this interactive teaching program you will be asked to make multiple decisions, some small some large, in order to achieve your goal. Along the way, you may encounter things that you are unfamiliar with, or decisions you feel unable to make. If this happens, there should be an option to give you more information. Select this, read through the given information, and try again. (DISCLAIMER: Some elements of this game are ficticious and non-factual.) Type the number corresponding to your answer then press 'Enter'. If you want to read something that you previously read, scroll up. If you still have problems, please call me (Henry Lima) over. Thank you. (Press the 'SpaceBar' then 'Enter' to continue.)")
         if howtoplay == ' ':
             beginningcode(wronginput)
             break
@@ -121,19 +121,9 @@ def nanhal(noic, klis, mrowklis, lreap, leets, ssarb, eman):
                 print("It looks like someone thought that crime pays. Unfortunately (for you), you have been caught in an attempt to smuggle silkworms to foriengers. You were willing to betray your entire country just to make an extra buck. If this is a surpruise to you, you should have checked the extra information in the marketplace. Tough luck, Goodbye.")
                 exit()
             else:
-                if noic > 500:
-                    noic = noic - 100
-                    if noic > 1000:
-                        noic = noic - 100
-                elif klis > 10:
-                    klis = klis - 2
-                    if kl > 20:
-                        klis = klis - 2
-                    elif kl > 30:
-                        klis = klis - 4
-                else:
-                    print("Dang, you have little money, and very little silk. The officials were going to tax you, but after looking at your inventory they didn't bother to.")
-                return noic, klis, mrowklis, lreap, leets, ssarb
+                noic, klis, lreap, leets, ssarb = noic, klis, lreap, leets, ssarb * .9
+                noic, klis, lreap, leets, ssarb = int(noic), int(klis), int(lreap), int(leets), int(ssarb)
+                return noic, klis, lreap, leets, ssarb
                 break
         elif marketorleave == 3:
             exit()
@@ -171,26 +161,69 @@ def lanzhou(no, kl, mrowkl, lre, lee, ssa, em):
                 print("It looks like someone thought that crime pays. Unfortunately (for you), you have been caught in an attempt to smuggle silkworms to foriengers. You were willing to betray your entire country just to make an extra buck. If this is a surpruise to you, you should have checked the extra information in the marketplace. Tough luck, Goodbye.")
                 exit()
             else:
-                if no > 500:
-                    no = no - 100
-                    if no > 1000:
-                        no = no - 100
-                elif kl > 10:
-                    kl = kl - 2
-                    if kl > 20:
-                        kl = kl - 2
-                    elif kl > 30:
-                        kl = kl - 4
-                else:
-                    print("Dang, you have little money, and very little silk. The officials were going to tax you, but after looking at your inventory they didn't bother to.")
-                return no, kl, mrowkl, lre, lee, ssa
+                no, kl lre, lee, ssa = no, kl, lre, lee, ssa * .9
+                no, kl, mrowkl, lre, lee, ssa = int(no), int(kl), int(lre), int(lee), int(ssa)
+                return no, kl, lre, lee, ssa
                 break
         elif marketorleavech == 3:
             exit()
         count = 1
 
-def indial():
-    print('indial')
+def indial(fd, il, rl, lcraft, scraft, me):
+    fd, il, rl, lcraft, scraft = miran(fd, il, rl, lcraft, scraft, me)
+    return fd, il, rl, lcraft, scraft
+
+def miran(oo, i, ea, eea, aa, ae):
+    count = 0
+    while True:
+        if count == 0:
+            messageinmiran = str(f"\nCongratulations, {ae}. You have safely traveled from Lanzhou to Miran. Along the way you visited Wuwei, Anxi, and Loulan. You have only stopped now because you are completely out of food. In order to continue to your next destination, you must stock up. This town has little to offer, but the local tradesmen are eager to see what you have to offer in return for food. If you wish to continue you require 1000 food. Steel will carry a slightly higher value due to this town's need for protection from barbarians. However, there is little need or desire for silk in this quaint town. Go! Trade!\n 1. Market\n 2. Continue Journey\n 3.Exit\n")
+        else:
+            messageinmiran = str(f"\nYou need 1000 food to continue.\n 1.Market\n 2. Continue Journey\n 3. Exit\n ")
+        decisioninmiran = inputtemplate(messageinmiran, 0, 3 )
+        if decisioninmiran == 1:
+            oo, i, ea, eea, aa = marketinmiran(oo, i, ea, eea, aa, ae)
+        elif decisioninmiran == 2:
+            if oo >= 1000:
+                return oo, i, ea, eea, aa
+                break
+            else:
+                print("\nYou don't have enough food!\n")
+        elif decisioninmiran == 3:
+            exit()
+        count = 1
+
+def marketinmiran(eatables, thread, shiny, sharp, ornament, un):
+    while True:
+        marketinmiranmessage = str(f"Welcome, {un}, to the market! You have {eatables} food, {thread} units of silk, {shiny} bags of pearls, {sharp} steel products, {ornament} brass products.\n 1. Sell Silk\n 2. Sell Pearls\n 3. Sell Steel Products\n 4. Sell Brass Products\n 5. Leave Market\n 6. Advice From Amil Yrneh\n")
+        decisioninmarketinmiran = inputtemplate(marketinmiranmessage, 0, 5)
+        if decisioninmarketinmiran == 1:
+            eatables, thread = transinmarketm(eatables, thread, 'units of silk', 160)
+        elif decisioninmarketinmiran == 2:
+            eatables, shiny = transinmarketm(eatables, shiny, 'bags of pearls', 105)
+        elif decisioninmarketinmiran == 3:
+            eatables, sharp = transinmarketm(eatables, sharp, 'steel products', 135)
+        elif decisioninmarketinmiran == 4:
+            eatables, ornament = transinmarketm(eatables, ornament, 'brass products', 65)
+        elif decisioninmarketinmiran == 5: break
+        elif decisioninmarketinmiran == 6:
+            print("\nThe value of silk and pearl will continue to increase as you travel, so I would wait to sell those. I think should sell some steel, as it is more valuable here than in peaceful towns. I would also sell some brass, as its price wont differ from location to location.\n")
+    return eatables, thread, shiny, sharp, ornament
+
+def transinmarketm(eat, product, productname, sellprice):
+    while True:
+        sellmessage = str(f"How many {productname} would you like to sell? You will get {sellprice} food per unit of silk sold. You currently have {eat} food, and {product} {productname}. You can sell up to 100 units at a time. If you wish to exit, type 101 and 'Enter'.\n")
+        productsellnumber = inputtemplate(sellmessage, 0 , 101)
+        if productsellnumber == 101:
+            return eat, product
+            break
+        else:
+            if productsellnumber > product:
+                print("You don't have enough!!\n")
+            else:
+                product = product - productsellnumber
+                eatgained = productsellnumber * sellprice
+                eat = eat + eatgained
 
 def indias():
     print('indias')
@@ -206,11 +239,18 @@ def main():
     answer23rdq = beginjourney(name)
     if answer23rdq == 1:
         coins, sil, silkworm, pearl, steelcraft, brasscraft = xian(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
-        coins, sil, silkworm, pearl, steelcraft, brasscraft = lanzhou(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
-        indial()
+        coins, sil, pearl, steelcraft, brasscraft = lanzhou(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
+        food = 0
+        food, sil, pearl, steelcraft, brasscraft = indial(food, sil, pearl, steelcraft, brasscraft, name)
+        food, sil, pearl, steelcraft, brasscraft = persial(food, sil, pearl, steelcraft, brasscraft, name)
+        food, sil, pearl, steelcraft, brasscraft = mesol(food, sil, pearl, steelcraft, brasscraft, name)
     elif answer23rdq == 2:
-        coins, sil, silkworm, pearl, steelcraft, brasscraft = nanhal(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
-        indias()
+        coins, sil, pearl, steelcraft, brasscraft = nanhal(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
+        food = 0
+        food, sil, pearl, steelcraft, brasscraft = indias(food, sil, pearl, steelcraft, brasscraft, name)
+        food, sil, pearl, steelcraft, brasscraft = persias(food, sil, pearl, steelcraft, brasscraft, name)
+        food, sil, pearl, steelcraft, brasscraft = mesos(food, sil, pearl, steelcraft, brasscraft, name)
+    alexandria()
     return
 
 if __name__ == '__main__':
