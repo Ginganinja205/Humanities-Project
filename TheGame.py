@@ -78,7 +78,9 @@ def marketplaceChina(C, s, sw, p, stc, bc, username):
         elif cmarketopening == 6:
             print("\nHello, I am Amil Yrneh, your guide.\n 1. Silk and Silkworms - China was the first civilization to discover how to create silk. Silk is created by silkworms when they form a cocoon. The cocoon can then be boiled, pulled of the worm, and spun into silk. However, it takes thousands of worms to make just a pound of silk. Since China is the only one who knows how to make it, it is literally worth its weight in gold in foreign civilizations. The farther away you go the more valuable it gets (due to its increased scarcity). Since no one else knows the secret to silk, the selling of silkworms to foreigners is punishable by death. However, if you managed to do it secretly, you would be the richest man in China!\n 2. Pearls - The Chinese were also the first to farm pearls. Their scarcity in foreign nations make them valuable, but they serve little practical purpose other than decoration. Their value will also go up the farther you are from China, but not as steeply.")
             print(" 3. Steel Products - China was also amongst the first to smelt iron into steel. Steel is much stronger than iron and is ideal for tools of war. Peaceful foreigners will not want to pay such high prices for weaponry, even if its are superior to their current stock. However, cities and towns with a strong military presence will definitely snap them up.\n 4. Brass Products - Brass is an alloy of copper, zinc, and lead, all of which China has large quantities of. It is mostly used for ornamentation, and it is a nice fallback to trade with in foreign nations if you want to save other products for later.\n 5. Food - In China, you will never go hungry. China has no shortage of food, due to their advanced farming techniques. This includes mixed stock rearing (a technique involving raising multiple agricultural lifeforms to increase efficiency), and puddling (tiered pools used to keep rice hydrated). However, in other civilizations you will want to buy food (to survive).\n\n")
-        elif cmarketopening == 7: break
+        elif cmarketopening == 7:
+            return C, s, sw, p, stc, bc
+            break
         elif cmarketopening == 8:
             exit()
 
@@ -105,22 +107,93 @@ def beginjourney(uname):
 
 #Last stop in China by water
 def nanhal(noic, klis, mrowklis, lreap, leets, ssarb, eman):
+    count = 0
     while True:
-        leavechinamessage = str(f"\n Your barge travels swiftly, it isn't long before you have reached Nanhal, you last stop in China. This is your last stop in China. Before you leave China {theusername}, you may wish to stop by the marketplace to stock up on goods and commodities. You may also leave China immediately.\n 1. Marketplace\n 2. Leave China\n 3. Exit\n")
+        if count == 0:
+            leavechinamessage = str(f"\nYour barge travels swiftly, it isn't long before you have reached Nanhal, you last stop in China. You are halted by officials asking if you have a seal that permits you to trade with foreigners. Luckily, your father supplied you with one. The officials will also check your stock, when you leave, to tax some of your goods. If it is any consolation, some of this money will go towards the building of roads and the creation of farmland. This is your last stop in China. Before you leave China {eman}, you may wish to stop by the marketplace to stock up on goods and commodities. You may also leave China immediately.\n 1. Marketplace\n 2. Leave China\n 3. Exit\n")
+        else:
+            leavechinamessage = str(f"\n 1. Marketplace\n 2. Leave China\n 3. Exit\n")
         marketorleave = inputtemplate(leavechinamessage, 0, 3)
         if marketorleave == 1:
             noic, klis, mrowklis, lreap, leets, ssarb = marketplaceChina(noic, klis, mrowklis, lreap, leets, ssarb, eman)
         elif marketorleave == 2:
-            if mroklis > 0:
+            if mrowklis > 0:
                 print("It looks like someone thought that crime pays. Unfortunately (for you), you have been caught in an attempt to smuggle silkworms to foriengers. You were willing to betray your entire country just to make an extra buck. If this is a surpruise to you, you should have checked the extra information in the marketplace. Tough luck, Goodbye.")
                 exit()
             else:
+                if noic > 500:
+                    noic = noic - 100
+                    if noic > 1000:
+                        noic = noic - 100
+                elif klis > 10:
+                    klis = klis - 2
+                    if kl > 20:
+                        klis = klis - 2
+                    elif kl > 30:
+                        klis = klis - 4
+                else:
+                    print("Dang, you have little money, and very little silk. The officials were going to tax you, but after looking at your inventory they didn't bother to.")
                 return noic, klis, mrowklis, lreap, leets, ssarb
                 break
         elif marketorleave == 3:
             exit()
-def xian():
-    
+        count = 1
+
+def xian(noi, kli, mrowkli, lrea, leet, ssar, ema):
+    count = 0
+    while True:
+        if count == 0:
+            contmessage = str(f"\nTravel by land may be a bit tedious, but you rest easy knowing that you and your possesions are safe. The roads are nice and well constructed, thanks to government funding. Before you continue {ema}, you may wish to stop by the marketplace to stock up on goods and commodities. You may also continue to Lanzhou.\n 1. Marketplace\n 2. Continue\n 3. Exit\n")
+        else:
+            contmessage = str(f"\n 1. Marketplace\n 2. Continue\n 3. Exit\n")
+        marketorcont = inputtemplate(contmessage, 0, 3)
+        if marketorcont == 1:
+            noi, kli, mrowkli, lrea, leet, ssar = marketplaceChina(noi, kli, mrowkli, lrea, leet, ssar, ema)
+        elif marketorcont == 2:
+            return noi, kli, mrowkli, lrea, leet, ssar
+            break
+        elif marketorcont == 3:
+            exit()
+        count = 1
+
+def lanzhou(no, kl, mrowkl, lre, lee, ssa, em):
+    count = 0
+    while True:
+        if count == 0:
+            leavechinalandmessage = str(f"\nYou have reached the edge of China, and will soon journey out through the Great Wall, a morbid reminder of the dangers of the outside world, full of barbarians. Don't worry, you will travel with a platton of loyal guards armed with steel armor, weapons, and repeating crossbows (yes really!!). You are halted by officials asking if you have a seal that permits you to trade with foreigners. Luckily, your father supplied you with one. The officials will also check your stock, when you leave, to tax some of your goods. If it is any consolation, some of this money will go towards the building of roads and the creation of farmland. This is your last stop in China. Before you leave China {em}, you may wish to stop by the marketplace to stock up on goods and commodities. You may also leave China immediately.\n 1. Marketplace\n 2. Leave China\n 3. Exit\n")
+        else:
+            leavechinalandmessage = str(f"\n 1. Marketplace\n 2. Leave China\n 3. Exit\n")
+        marketorleavech = inputtemplate(leavechinalandmessage, 0, 3)
+        if marketorleavech == 1:
+            no, kl, mrowkl, lre, lee, ssa = marketplaceChina(no, kl, mrowkl, lre, lee, ssa, em)
+        elif marketorleavech == 2:
+            if mrowkl > 0:
+                print("It looks like someone thought that crime pays. Unfortunately (for you), you have been caught in an attempt to smuggle silkworms to foriengers. You were willing to betray your entire country just to make an extra buck. If this is a surpruise to you, you should have checked the extra information in the marketplace. Tough luck, Goodbye.")
+                exit()
+            else:
+                if no > 500:
+                    no = no - 100
+                    if no > 1000:
+                        no = no - 100
+                elif kl > 10:
+                    kl = kl - 2
+                    if kl > 20:
+                        kl = kl - 2
+                    elif kl > 30:
+                        kl = kl - 4
+                else:
+                    print("Dang, you have little money, and very little silk. The officials were going to tax you, but after looking at your inventory they didn't bother to.")
+                return no, kl, mrowkl, lre, lee, ssa
+                break
+        elif marketorleavech == 3:
+            exit()
+        count = 1
+
+def indial():
+    print('indial')
+
+def indias():
+    print('indias')
 
 def main():
     wronginputmessage = str('Please type one of the numbers listed.\n')
@@ -134,8 +207,10 @@ def main():
     if answer23rdq == 1:
         coins, sil, silkworm, pearl, steelcraft, brasscraft = xian(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
         coins, sil, silkworm, pearl, steelcraft, brasscraft = lanzhou(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
+        indial()
     elif answer23rdq == 2:
         coins, sil, silkworm, pearl, steelcraft, brasscraft = nanhal(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
+        indias()
     return
 
 if __name__ == '__main__':
