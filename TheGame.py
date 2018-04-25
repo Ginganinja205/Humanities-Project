@@ -172,7 +172,7 @@ def lanzhou(no, kl, mrowkl, lre, lee, ssa, em):
 def indial(fd, il, rl, lcraft, scraft, me):
     fd, il, rl, lcraft, scraft = miran(fd, il, rl, lcraft, scraft, me)
     ice = 0
-    fd, il, rl, lcraft, scraft, ice = purushapura(fd, il, rl, lcraft, scraft, me)
+    fd, il, rl, lcraft, scraft, ice = purushapura(fd, il, rl, lcraft, scraft, ice, me)
     return fd, il, rl, lcraft, scraft, ice
 
 def miran(oo, i, ea, eea, aa, ae):
@@ -227,7 +227,7 @@ def transinmarketm(eat, product, productname, sellprice):
                 eatgained = productsellnumber * sellprice
                 eat = eat + eatgained
 
-def purushapura(foo, sils, pea, stc, brc, moi):
+def purushapura(foo, sils, pea, stc, brc, spc, moi):
     count = 0
     while True:
         if count == 0:
@@ -248,24 +248,53 @@ def purushapura(foo, sils, pea, stc, brc, moi):
         count = 1
 
 #CHANGE VARIABLE NAMES ADD SPICE CODE  eatables etc.
-def marketinpurushapura( od ,sik, pel, stel, bras, spic, mei):
+def marketinpurushapura( od, sik, pel, stel, bras, spic, mei):
     while True:
-        marketinpurumessage = str(f"Welcome, {mei}, to the market! You have {eatables} food, {thread} units of silk, {shiny} bags of pearls, {sharp} steel products, {ornament} brass products.\n 1. Sell Silk\n 2. Sell Pearls\n 3. Sell Steel Products\n 4. Sell Brass Products\n 5. Buy Spice\n 6. Leave Market\n 7. Advice From Amil Yrneh\n")
+        marketinpurumessage = str(f"Welcome, {mei}, to the market! You have {od} food, {sik} units of silk, {pel} bags of pearls, {stel} steel products, {bras} brass products.\n 1. Sell Silk\n 2. Sell Pearls\n 3. Sell Steel Products\n 4. Sell Brass Products\n 5. Buy Spice\n 6. Leave Market\n")
         decisioninmarketinpuru = inputtemplate(marketinpurumessage, 0, 6)
         if decisioninmarketinpuru == 1:
-            eatables, thread = transinmarketm(eatables, thread, 'units of silk', 175)
+            od, sik = transinmarketm(od, sik, 'units of silk', 175)
         elif decisioninmarketinpuru == 2:
-            eatables, shiny = transinmarketm(eatables, shiny, 'bags of pearls', 110)
+            od, pel = transinmarketm(od, pel, 'bags of pearls', 110)
         elif decisioninmarketinpuru == 3:
-            eatables, sharp = transinmarketm(eatables, sharp, 'steel products', 120)
+            od, stel = transinmarketm(od, stel, 'steel products', 120)
         elif decisioninmarketinpuru == 4:
-            eatables, ornament = transinmarketm(eatables, ornament, 'brass products', 65)
-        elif decisioninpurushapura == 5:
-        elif decisioninmarketinpuru == 6: break
-        elif decisioninmarketinpuru == 7:
-         print("\nThe value of silk is fairly high here, although it will be highest in Alexandria. I think you shouldn't sell steel, as it is less valuable here thanks to the peace brought by Maurya.\n")
-    return eatables, thread, shiny, sharp, ornament
+            od, bras = transinmarketm(od, bras, 'brass products', 65)
+        elif decisioninmarketinpuru == 5:
+            sik, pel, stel, bras, spic = buyspice(sik, pel, stel, bras, spic)
+        elif decisioninmarketinpuru == 6:
+            break
+            return od, sik, pel, stel, bras, spic
 
+def buyspice(dea, yni, pra, tne, cip):
+    while True:
+        spicebuymessage = str(f"\nPlease type what you wish to good you wish to exchange for spice. Spice will be valuable. You have {dea} units of silk, {yni} bags of pearls, {pra} steel products, {tne} brass products, and {cip} units of spice.\n 1. Exchange Spice\n 2. Exchange Pearls\n 3. Exchange Steel Products\n 4. Exchange Brass Products\n 5. Return To Main Market\n")
+        exchangetype = inputtemplate(spicebuymessage, 0, 5)
+        if exchangetype == 1:
+            amountexchange = inputtemplate("How much would you like to exchange? The rate is 4 spice per silk. Enter 101 to exit.\n", 0, 101)
+            if amountexchange != 101:
+                dea = dea - amountexchange
+                cipadded = amountexchange * 4
+                cip = cip + cipadded
+        elif exchangetype == 2:
+            amountexchange = inputtemplate("How much would you like to exchange? The rate is 2 spice per bag of pearls. Enter 101 to exit.\n", 0, 101)
+            if amountexchange != 101:
+                yni = yni - amountexchange
+                cipadded = amountexchange * 2
+                cip = cip + cipadded
+        elif exchangetype == 3:
+            amountexchange = inputtemplate("How much would you like to exchange? The rate is 1 spice for 1 steel product. Enter 101 to exit.\n", 0, 101)
+            if amountexchange != 101:
+                pra = pra - amountexchange
+                cip = cip + amountexchange
+        elif exchangetype == 4:
+            amountexchange = inputtemplate("How much would you like to exchange? The rate is 1 spice for 1 brass product. Enter 101 to exit.\n", 0, 101)
+            if amountexchange != 101:
+                tne = tne - amountexchange
+                cip = cip + amountexchange
+        elif exchangetype == 5:
+            return dea, yni, pra, tne, cip
+            break
 def indias():
     print('indias')
 
