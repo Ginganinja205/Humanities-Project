@@ -21,7 +21,7 @@ def miran(oo, i, ea, eea, aa, ae):
     count = 0
     while True:
         if count == 0:
-            messageinmiran = str(f"\nCongratulations, {ae}. You have safely traveled from Lanzhou to Miran. Along the way you visited Wuwei, Anxi, and Loulan. You have only stopped now because you are completely out of food. In order to continue to your next destination, you must stock up. This town has little to offer, but the local tradesmen are eager to see what you have to offer in return for food. If you wish to continue you require 1000 food. Steel will carry a slightly higher value due to this town's need for protection from barbarians. However, there is little need or desire for silk in this quaint town. Go! Trade!\n 1. Market\n 2. Continue Journey\n 3.Exit\n")
+            messageinmiran = str(f"\nCongratulations, {ae}. You have safely traveled from Lanzhou to Miran. Along the way you visited Wuwei, Anxi, and Loulan. You have only stopped now because you are completely out of food. In order to continue to your next destination, you must stock up. This town has little to offer, but the local tradesmen are eager to see what you have to offer in return for food. If you wish to continue you require 1000 food. Steel will carry a slightly higher value due to this town's need for protection from barbarians. However, there is little need or desire for silk in this quaint town. Go! Trade!\n 1. Market\n 2. Continue Journey\n 3. Exit\n")
         else:
             messageinmiran = str(f"\nYou need 1000 food to continue.\n 1.Market\n 2. Continue Journey\n 3. Exit\n ")
         decisioninmiran = inputtemplate(messageinmiran, 0, 3 )
@@ -39,22 +39,24 @@ def miran(oo, i, ea, eea, aa, ae):
 
 def marketinmiran(eatables, thread, shiny, sharp, ornament, un):
     while True:
-        marketinmiranmessage = str(f"Welcome {un} to the market. You have {eatables} food, {thread} units of silk, {shiny} bags of pearls, {sharp} steel products, {ornament} brass products.\n 1. Sell Silk\n 2. Sell Pearls\n 3. Sell Steel Products\n 4. Sell Brass Products\n 5. Leave Market\n")
-        decisioninmarketinmiran = inputtemplate(marketinmiranmessage, 0, 5)
+        marketinmiranmessage = str(f"Welcome, {un}, to the market! You have {eatables} food, {thread} units of silk, {shiny} bags of pearls, {sharp} steel products, {ornament} brass products.\n 1. Sell Silk\n 2. Sell Pearls\n 3. Sell Steel Products\n 4. Sell Brass Products\n 5. Leave Market\n 6. Advice From Amil Yrneh\n")
+        decisioninmarketinmiran = inputtemplate(marketinmiranmessage, 0, 6)
         if decisioninmarketinmiran == 1:
-            eatables, thread = transinmarketm(eatables, thread, 'silk', 155)
+            eatables, thread = transinmarketm(eatables, thread, 'units of silk', 160)
         elif decisioninmarketinmiran == 2:
-            eatables, shiny = transinmarketm(eatables)
+            eatables, shiny = transinmarketm(eatables, shiny, 'bags of pearls', 105)
         elif decisioninmarketinmiran == 3:
-            eatables, sharp = transinmarketm(eatables)
+            eatables, sharp = transinmarketm(eatables, sharp, 'steel products', 135)
         elif decisioninmarketinmiran == 4:
-            eatables, ornament = transinmarketm(eatables)
+            eatables, ornament = transinmarketm(eatables, ornament, 'brass products', 65)
         elif decisioninmarketinmiran == 5: break
+        elif decisioninmarketinmiran == 6:
+            print("\nThe value of silk and pearl will continue to increase as you travel, so I would wait to sell those. I think should sell some steel, as it is more valuable here than in peaceful towns. I would also sell some brass, as its price wont differ from location to location.\n")
     return eatables, thread, shiny, sharp, ornament
 
 def transinmarketm(eat, product, productname, sellprice):
     while True:
-        sellmessage = str(f"How much {productname} would you like to sell? You will get {sellprice} food per unit of silk sold. You currently have {eat}  food, and {product} units of {productname}. You can sell up to 100 units at a time. If you wish to exit, type 101 and 'Enter'.\n")
+        sellmessage = str(f"How many {productname} would you like to sell? You will get {sellprice} food per unit of silk sold. You currently have {eat} food, and {product} {productname}. You can sell up to 100 units at a time. If you wish to exit, type 101 and 'Enter'.\n")
         productsellnumber = inputtemplate(sellmessage, 0 , 101)
         if productsellnumber == 101:
             return eat, product

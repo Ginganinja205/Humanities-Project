@@ -171,15 +171,17 @@ def lanzhou(no, kl, mrowkl, lre, lee, ssa, em):
 
 def indial(fd, il, rl, lcraft, scraft, me):
     fd, il, rl, lcraft, scraft = miran(fd, il, rl, lcraft, scraft, me)
-    return fd, il, rl, lcraft, scraft
+    ice = 0
+    fd, il, rl, lcraft, scraft, ice = purushapura(fd, il, rl, lcraft, scraft, me)
+    return fd, il, rl, lcraft, scraft, ice
 
 def miran(oo, i, ea, eea, aa, ae):
     count = 0
     while True:
         if count == 0:
-            messageinmiran = str(f"\nCongratulations, {ae}. You have safely traveled from Lanzhou to Miran. Along the way you visited Wuwei, Anxi, and Loulan. You have only stopped now because you are completely out of food. In order to continue to your next destination, you must stock up. This town has little to offer, but the local tradesmen are eager to see what you have to offer in return for food. If you wish to continue you require 1000 food. Steel will carry a slightly higher value due to this town's need for protection from barbarians. However, there is little need or desire for silk in this quaint town. Go! Trade!\n 1. Market\n 2. Continue Journey\n 3.Exit\n")
+            messageinmiran = str(f"\nCongratulations, {ae}. You have safely traveled from Lanzhou to Miran. Along the way you visited Wuwei, Anxi, and Loulan. You have only stopped now because you are completely out of food. In order to continue to your next destination, you must stock up. This town has little to offer, but the local tradesmen are eager to see what you have to offer in return for food. If you wish to continue you require 1000 food. Steel will carry a slightly higher value due to this town's need for protection from barbarians. However, there is little need or desire for silk in this quaint town. Go! Trade!\n 1. Market\n 2. Continue Journey\n 3. Exit\n")
         else:
-            messageinmiran = str(f"\nYou need 1000 food to continue.\n 1.Market\n 2. Continue Journey\n 3. Exit\n ")
+            messageinmiran = str(f"\nYou need 1000 food to continue.\n 1. Market\n 2. Continue Journey\n 3. Exit\n ")
         decisioninmiran = inputtemplate(messageinmiran, 0, 3 )
         if decisioninmiran == 1:
             oo, i, ea, eea, aa = marketinmiran(oo, i, ea, eea, aa, ae)
@@ -196,7 +198,7 @@ def miran(oo, i, ea, eea, aa, ae):
 def marketinmiran(eatables, thread, shiny, sharp, ornament, un):
     while True:
         marketinmiranmessage = str(f"Welcome, {un}, to the market! You have {eatables} food, {thread} units of silk, {shiny} bags of pearls, {sharp} steel products, {ornament} brass products.\n 1. Sell Silk\n 2. Sell Pearls\n 3. Sell Steel Products\n 4. Sell Brass Products\n 5. Leave Market\n 6. Advice From Amil Yrneh\n")
-        decisioninmarketinmiran = inputtemplate(marketinmiranmessage, 0, 5)
+        decisioninmarketinmiran = inputtemplate(marketinmiranmessage, 0, 6)
         if decisioninmarketinmiran == 1:
             eatables, thread = transinmarketm(eatables, thread, 'units of silk', 160)
         elif decisioninmarketinmiran == 2:
@@ -207,7 +209,7 @@ def marketinmiran(eatables, thread, shiny, sharp, ornament, un):
             eatables, ornament = transinmarketm(eatables, ornament, 'brass products', 65)
         elif decisioninmarketinmiran == 5: break
         elif decisioninmarketinmiran == 6:
-            print("\nThe value of silk and pearl will continue to increase as you travel, so I would wait to sell those. I think should sell some steel, as it is more valuable here than in peaceful towns. I would also sell some brass, as its price wont differ from location to location.\n")
+            print("\nThe value of silk and pearl will continue to increase as you travel, so I would wait to sell those. I think you should sell some steel, as it is more valuable here than in peaceful towns. I would also sell some brass, as its price won't differ from location to location.\n")
     return eatables, thread, shiny, sharp, ornament
 
 def transinmarketm(eat, product, productname, sellprice):
@@ -225,6 +227,45 @@ def transinmarketm(eat, product, productname, sellprice):
                 eatgained = productsellnumber * sellprice
                 eat = eat + eatgained
 
+def purushapura(foo, sils, pea, stc, brc, moi):
+    count = 0
+    while True:
+        if count == 0:
+            messageinpurushapura = str(f"\nCongratulations, {moi}. You have safely traveled from Miran to Purushapura. Along the way you visited Niya, Khotan, and Srinagar. You have only stopped now because you are completely out of food. In order to continue to your next destination, you must stock up. The local tradesmen are eager to see what you have to offer in return for food. During this period, India's economy is mostly based off of agriculture (like most civilizations) and craftspeople. If you wish to continue you require 1500 food. You are in Northern India which is currently ruled by Chandragupta Maurya. Maurya has put into place a tax system and made safe, well-constructed roads. In fact, there is even a government coin, further solidifying the economy. While here, you can buy spices to sell in foreign nations. People are willing to pay highly for silk; silk textiles are one of the main exports. Go! Trade!\n 1. Market\n 2. Continue Journey\n 3. Exit\n")
+        else:
+            messageinpurushapura = str(f"\nYou need 1500 food to continue.\n 1. Market\n 2. Continue Journey\n 3. Exit\n ")
+        decisioninpurushapura = inputtemplate(messageinpurushapura, 0, 3 )
+        if decisioninpurushapura == 1:
+            foo, sils, pea, stc, brc, spc = marketinpurushapura(foo, sils, pea, stc, brc, spc, moi)
+        elif decisioninpurushapura == 2:
+            if foo >= 1500:
+                return foo, sils, pea, stc, brc, spc
+                break
+            else:
+                print("\nYou don't have enough food!\n")
+        elif decisioninpurushapura == 3:
+            exit()
+        count = 1
+
+#CHANGE VARIABLE NAMES ADD SPICE CODE  eatables etc.
+def marketinpurushapura( od ,sik, pel, stel, bras, spic, mei):
+    while True:
+        marketinpurumessage = str(f"Welcome, {mei}, to the market! You have {eatables} food, {thread} units of silk, {shiny} bags of pearls, {sharp} steel products, {ornament} brass products.\n 1. Sell Silk\n 2. Sell Pearls\n 3. Sell Steel Products\n 4. Sell Brass Products\n 5. Buy Spice\n 6. Leave Market\n 7. Advice From Amil Yrneh\n")
+        decisioninmarketinpuru = inputtemplate(marketinpurumessage, 0, 6)
+        if decisioninmarketinpuru == 1:
+            eatables, thread = transinmarketm(eatables, thread, 'units of silk', 175)
+        elif decisioninmarketinpuru == 2:
+            eatables, shiny = transinmarketm(eatables, shiny, 'bags of pearls', 110)
+        elif decisioninmarketinpuru == 3:
+            eatables, sharp = transinmarketm(eatables, sharp, 'steel products', 120)
+        elif decisioninmarketinpuru == 4:
+            eatables, ornament = transinmarketm(eatables, ornament, 'brass products', 65)
+        elif decisioninpurushapura == 5:
+        elif decisioninmarketinpuru == 6: break
+        elif decisioninmarketinpuru == 7:
+         print("\nThe value of silk is fairly high here, although it will be highest in Alexandria. I think you shouldn't sell steel, as it is less valuable here thanks to the peace brought by Maurya.\n")
+    return eatables, thread, shiny, sharp, ornament
+
 def indias():
     print('indias')
 
@@ -241,16 +282,11 @@ def main():
         coins, sil, silkworm, pearl, steelcraft, brasscraft = xian(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
         coins, sil, pearl, steelcraft, brasscraft = lanzhou(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
         food = 0
-        food, sil, pearl, steelcraft, brasscraft = indial(food, sil, pearl, steelcraft, brasscraft, name)
-        food, sil, pearl, steelcraft, brasscraft = persial(food, sil, pearl, steelcraft, brasscraft, name)
-        food, sil, pearl, steelcraft, brasscraft = mesol(food, sil, pearl, steelcraft, brasscraft, name)
+        food, sil, pearl, steelcraft, brasscraft, spice = indial(food, sil, pearl, steelcraft, brasscraft, name)
     elif answer23rdq == 2:
         coins, sil, pearl, steelcraft, brasscraft = nanhal(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
         food = 0
-        food, sil, pearl, steelcraft, brasscraft = indias(food, sil, pearl, steelcraft, brasscraft, name)
-        food, sil, pearl, steelcraft, brasscraft = persias(food, sil, pearl, steelcraft, brasscraft, name)
-        food, sil, pearl, steelcraft, brasscraft = mesos(food, sil, pearl, steelcraft, brasscraft, name)
-    alexandria()
+
     return
 
 if __name__ == '__main__':
