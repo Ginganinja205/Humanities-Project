@@ -95,7 +95,7 @@ def purushapura(foo, sils, pea, stc, brc, spc, moi):
 #CHANGE VARIABLE NAMES ADD SPICE CODE  eatables etc.
 def marketinpurushapura( od, sik, pel, stel, bras, spic, mei):
     while True:
-        marketinpurumessage = str(f"Welcome, {mei}, to the market! You have {od} food, {sik} units of silk, {pel} bags of pearls, {stel} steel products, {bras} brass products.\n 1. Sell Silk\n 2. Sell Pearls\n 3. Sell Steel Products\n 4. Sell Brass Products\n 5. Buy Spice\n 6. Leave Market\n 7. Advice From Amil Yrneh\n")
+        marketinpurumessage = str(f"Welcome, {mei}, to the market! You have {od} food, {sik} units of silk, {pel} bags of pearls, {stel} steel products, {bras} brass products.\n 1. Sell Silk\n 2. Sell Pearls\n 3. Sell Steel Products\n 4. Sell Brass Products\n 5. Buy Spice\n 6. Leave Market\n")
         decisioninmarketinpuru = inputtemplate(marketinpurumessage, 0, 6)
         if decisioninmarketinpuru == 1:
             od, sik = transinmarketm(od, sik, 'units of silk', 175)
@@ -107,10 +107,9 @@ def marketinpurushapura( od, sik, pel, stel, bras, spic, mei):
             od, bras = transinmarketm(od, bras, 'brass products', 65)
         elif decisioninmarketinpuru == 5:
             sik, pel, stel, bras, spic = buyspice(sik, pel, stel, bras, spic)
-        elif decisioninmarketinpuru == 6: break
-        elif decisioninmarketinpuru == 7:
-         print("\nThe value of silk is fairly high here, although it will be highest in Alexandria. I think you shouldn't sell steel, as it is less valuable here thanks to the peace brought by Maurya.\n")
-    return od, sik, pel, stel, bras, spic
+        elif decisioninmarketinpuru == 6:
+            break
+            return od, sik, pel, stel, bras, spic
 
 def buyspice(dea, yni, pra, tne, cip):
     while True:
@@ -141,8 +140,7 @@ def buyspice(dea, yni, pra, tne, cip):
         elif exchangetype == 5:
             return dea, yni, pra, tne, cip
             break
-
-
+            
 def main():
     food, sil, pearl, steelcraft, brasscraft, spice = indial(0, 10, 10, 10, 10, 'Henry Lima')
     print("done test")

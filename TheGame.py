@@ -231,14 +231,16 @@ def purushapura(foo, sils, pea, stc, brc, spc, moi):
     count = 0
     while True:
         if count == 0:
-            messageinpurushapura = str(f"\nCongratulations, {moi}. You have safely traveled from Miran to Purushapura. Along the way you visited Niya, Khotan, and Srinagar. You have only stopped now because you are completely out of food. In order to continue to your next destination, you must stock up. The local tradesmen are eager to see what you have to offer in return for food. During this period, India's economy is mostly based off of agriculture (like most civilizations) and craftspeople. If you wish to continue you require 1500 food. You are in Northern India which is currently ruled by Chandragupta Maurya. Maurya has put into place a tax system and made safe, well-constructed roads. In fact, there is even a government coin, further solidifying the economy. While here, you can buy spices to sell in foreign nations. People are willing to pay highly for silk; silk textiles are one of the main exports. Go! Trade!\n 1. Market\n 2. Continue Journey\n 3. Exit\n")
+            messageinpurushapura = str(f"\nCongratulations, {moi}. You have safely traveled from Miran to Purushapura. Along the way you visited Niya, Khotan, and Srinagar. You have only stopped now because you are completely out of food. In order to continue to your next destination, you must stock up. The local tradesmen are eager to see what you have to offer in return for food. During this period, India's economy is mostly based off of agriculture (like most civilizations) and craftspeople. If you wish to continue you require 1750 food. You are in Northern India which is currently ruled by Chandragupta Maurya. He has put into place a tax system (yes, it applies to you too)and made safe, well-constructed roads. In fact, there is even a government coin. While here, you can buy spices to sell in foreign nations. People are willing to pay highly for silk; silk textiles are one of the main exports. Go! Trade!\n 1. Market\n 2. Continue Journey\n 3. Exit\n")
         else:
-            messageinpurushapura = str(f"\nYou need 1500 food to continue.\n 1. Market\n 2. Continue Journey\n 3. Exit\n ")
+            messageinpurushapura = str(f"\nYou need 1750 food to continue.\n 1. Market\n 2. Continue Journey\n 3. Exit\n")
         decisioninpurushapura = inputtemplate(messageinpurushapura, 0, 3 )
         if decisioninpurushapura == 1:
             foo, sils, pea, stc, brc, spc = marketinpurushapura(foo, sils, pea, stc, brc, spc, moi)
         elif decisioninpurushapura == 2:
-            if foo >= 1500:
+            if foo >= 1750:
+                sils, pea, stc, brc, spc = sils, pea, stc, brc, spc * .9
+                sils, pea, stc, brc, spc = int(sils), int(pea), int(stc), int(brc), int(spc)
                 return foo, sils, pea, stc, brc, spc
                 break
             else:
@@ -295,8 +297,30 @@ def buyspice(dea, yni, pra, tne, cip):
         elif exchangetype == 5:
             return dea, yni, pra, tne, cip
             break
-def indias():
-    print('indias')
+
+def indias(fo, de, yn, pr, tn, maen):
+    count = 0
+    de, yn, pr, tn = de, yn, pr, tn * .9
+    de, yn, pr, tn = int(de), int(yn), int(pr), int(tn)
+    while True:
+        if count == 0:
+            messageoncoastin = str(f"\nCongratulations, {moi}. You have safely traveled from Nanhal to a small town on the coast of India. You would have continued, but you are out of food. In order to continue to your next destination, you must stock up. The local tradesmen are eager to see what you have to offer in return for food. During this period, India's economy is mostly based off of agriculture (like most civilizations) and craftspeople. If you wish to continue you require 1500 food. You are in South India which is currently ruled by Chandragupta Maurya. Maurya has put into place a tax system (yes, it does apply to you) and made safe, well-constructed roads. In fact, there is even a government coin. While here, you can buy spices to sell in foreign nations. People are willing to pay highly for silk; silk textiles are one of the main exports. Oh! By the way, you lost ten percent of what you have. Go! Trade!\n 1. Market\n 2. Continue Journey\n 3. Exit\n")
+        elif count == 1:
+            messageoncoastin = str(f"\nYou need 1500 food to continue.\n 1. Market\n 2. Continue Journey\n 3. Exit\n")
+        choiceoncoastin = inputtemplate(messageoncoastin, 0, 3)
+        if choiceoncoastin == 1:
+            fo, de, yn, pr, tn, ci = marketinpurushapura(fo, de, yn, pr, tn, ci, maen)
+        elif choiceoncoastin == 2:
+            if fo >= 1500:
+                de, yn, pr, tn, ci = de, yn, pr, tn, ci * .9
+                de, yn, pr, tn, ci = int(de), int(yn), int(pr), int(tn), int(ci)
+                return fo, de, yn, pr, tn, ci
+                break
+            else:
+                print("\nYou don't have enough food!\n")
+        elif choiceoncoastin == 3:
+            exit()
+        count = 1
 
 def main():
     wronginputmessage = str('Please type one of the numbers listed.\n')
@@ -312,10 +336,12 @@ def main():
         coins, sil, pearl, steelcraft, brasscraft = lanzhou(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
         food = 0
         food, sil, pearl, steelcraft, brasscraft, spice = indial(food, sil, pearl, steelcraft, brasscraft, name)
+        food, sil, pearl, steelcraft, brasscraft, spice = persial(food, sil, pearl, steelcraft, brasscraft, spice, name)
     elif answer23rdq == 2:
         coins, sil, pearl, steelcraft, brasscraft = nanhal(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
         food = 0
-
+        food, sil, pearl, steelcraft, brasscraft, spice = indias(food, sil, pearl, steelcraft, brasscraft, name)
+        food, sil, pearl, steelcraft, brasscraft, spice = persias(food, sil, pearl, steelcraft, brasscraft, spice, name)
     return
 
 if __name__ == '__main__':
