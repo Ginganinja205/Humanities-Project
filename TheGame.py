@@ -1,4 +1,4 @@
-#Opening Screen Credits and Stuff Here
+exittemplate()#Opening Screen Credits and Stuff Here
 def beginningcode(wronginputmssg):
     while True:
         playorexit = input("\nWelcome Participant\n Please type '1' to start, '2' to exit, '3' for How To Play, or '4' for credits. Press 'Enter' when you have selected your choice.\n 1. Start\n 2. Exit\n 3. How To Play\n 4. Credits/Citations\n")
@@ -10,7 +10,7 @@ def beginningcode(wronginputmssg):
         if choice1 == 1:
             break
         elif choice1 == 2:
-            exit()
+            exittemplate()
         elif choice1 == 3:
             Instructions(wronginputmssg)
             break
@@ -47,6 +47,10 @@ def inputtemplate(message, numberortext, numberofoptions):
     else:
         return str(theinput)
 
+def exittemplate():
+    areusure = inputtemplate("Are you sure you wish to exit, your progress will not be saved?\n 1. Yes\n 2. No\n", 0, 2)
+    if areusure == 1: exittemplate()
+
 #Username, Establishes Base Products Currency, Leads to Market or Cont.s to Journey
 def startingpage():
     namemssg = str("\nHello user! You have been raised as a merchant in Luoyang, a town in Ancient China (for the intent of this game Ancient refers to a period from 400 BC to 1 BC). Your father has recently decided that it is time for you to attempt a practical execution of your knowledge. You will journey to Alexandria, Egypt with a small company of guards and servants to look after you and your wealth. Your scholar Amil Yrneh will go with you and act as guide. At the start of your journey, you will take some of your father's money and buy some goods and commodities to trade with along the way. China was one of the first nations to have government minted coinage, and this use of official currency bolstered their economy and created growth in the middle class. Your father gives you your spending money in the form of this coinage. However, before we can continue please type your name:\n")
@@ -82,7 +86,7 @@ def marketplaceChina(C, s, sw, p, stc, bc, username):
             return C, s, sw, p, stc, bc
             break
         elif cmarketopening == 8:
-            exit()
+            exittemplate()
 
 #Math For Buying
 def markettrans(product, price, amountotal, Cns):
@@ -119,14 +123,14 @@ def nanhal(noic, klis, mrowklis, lreap, leets, ssarb, eman):
         elif marketorleave == 2:
             if mrowklis > 0:
                 print("It looks like someone thought that crime pays. Unfortunately (for you), you have been caught in an attempt to smuggle silkworms to foriengers. You were willing to betray your entire country just to make an extra buck. If this is a surpruise to you, you should have checked the extra information in the marketplace. Tough luck, Goodbye.")
-                exit()
+                exittemplate()
             else:
                 noic, klis, lreap, leets, ssarb = noic, klis, lreap, leets, ssarb * .9
                 noic, klis, lreap, leets, ssarb = int(noic), int(klis), int(lreap), int(leets), int(ssarb)
                 return noic, klis, lreap, leets, ssarb
                 break
         elif marketorleave == 3:
-            exit()
+            exittemplate()
         count = 1
 
 def xian(noi, kli, mrowkli, lrea, leet, ssar, ema):
@@ -143,7 +147,7 @@ def xian(noi, kli, mrowkli, lrea, leet, ssar, ema):
             return noi, kli, mrowkli, lrea, leet, ssar
             break
         elif marketorcont == 3:
-            exit()
+            exittemplate()
         count = 1
 
 def lanzhou(no, kl, mrowkl, lre, lee, ssa, em):
@@ -159,14 +163,14 @@ def lanzhou(no, kl, mrowkl, lre, lee, ssa, em):
         elif marketorleavech == 2:
             if mrowkl > 0:
                 print("It looks like someone thought that crime pays. Unfortunately (for you), you have been caught in an attempt to smuggle silkworms to foriengers. You were willing to betray your entire country just to make an extra buck. If this is a surpruise to you, you should have checked the extra information in the marketplace. Tough luck, Goodbye.")
-                exit()
+                exittemplate()
             else:
                 no, kl lre, lee, ssa = no, kl, lre, lee, ssa * .9
                 no, kl, mrowkl, lre, lee, ssa = int(no), int(kl), int(lre), int(lee), int(ssa)
                 return no, kl, lre, lee, ssa
                 break
         elif marketorleavech == 3:
-            exit()
+            exittemplate()
         count = 1
 
 def indial(fd, il, rl, lcraft, scraft, me):
@@ -193,7 +197,7 @@ def miran(oo, i, ea, eea, aa, ae):
             else:
                 print("\nYou don't have enough food!\n")
         elif decisioninmiran == 3:
-            exit()
+            exittemplate()
         count = 1
 
 def marketinmiran(eatables, thread, shiny, sharp, ornament, un):
@@ -248,7 +252,7 @@ def purushapura(foo, sils, pea, stc, brc, spc, moi):
             else:
                 print("\nYou don't have enough food!\n")
         elif decisioninpurushapura == 3:
-            exit()
+            exittemplate()
         count = 1
 
 def marketinpurushapura( od, sik, pel, stel, bras, spic, mei):
@@ -335,7 +339,7 @@ def indias(fo, de, yn, pr, tn, maen):
             else:
                 print("\nYou don't have enough food!\n")
         elif choiceoncoastin == 3:
-            exit()
+            exittemplate()
         count = 1
 
 def babylon(ood, lis, arl, scrft, bcrft, ecips, callsign):
@@ -356,7 +360,7 @@ def babylon(ood, lis, arl, scrft, bcrft, ecips, callsign):
             else:
                 print(f"\n You don't have enough food!!")
         elif decisioninbab == 3:
-            exit()
+            exittemplate()
 
 def marketinbab(oof, kliss, earl, stcrft, brcrft, spces, naam):
     while True:
@@ -373,10 +377,30 @@ def marketinbab(oof, kliss, earl, stcrft, brcrft, spces, naam):
         elif decisioninmarketinbab == 5:
             oof, spces = transinmarketm(oof, spces, 'spice', 120)
         elif decisioninmarketinbab == 6:
-            print(f"Keep in mind, you will want to buy as close as is possible to the exact amount of food you will need. This is your last stop. The backbone of the economy here in Mesopotamia is agricultural. Some key exports are oil, resin, and textiles. Due to a lack of natural rescources, they import raw materials (such as silk!!!) to refine and sell. Steel will hold a higher price.")
+            print(f"Keep in mind, you will want to buy as close as is possible to the exact amount of food you will need. This is your last stop. The backbone of the economy in Mesopotamia is agricultural. Some key exports are oil, resin, and textiles. Due to a lack of natural rescources, they import raw materials (such as silk!!!) to refine and sell. Steel will hold a higher price.")
         elif decisioninmarketinbab == 7:
             return oof, kliss, earl, stcrft, brcrft, spces
             break
+
+def mesos(consume, string, balls, stele, bare, cumin, callsign):
+    count = 0
+    while True:
+        if count == 0:
+            mssginbab = str(f"You have arrived in Tauri. This little known city has seen the rise and fall of many rulers. From the tyrannical rule of the Kings of Old Babylon (soldiers were not afraid to seize valuables as they saw fit), followed by the Assyrians, followed by the Neo-Babylonians. Each of these nations had their own tax system, but, unlike the civilizations you previously visited, they did little to help the common folk. After the Neo-Babs came the Persian Empire. It was with this empire that there was a tax reform. Taxes were fair and would go towards the betterment of the state. Now that Alexander the Great has swept through, there is some unrest and uncertainty. Little is known about how he plans to govern. Steel will be priced highly in these uncertain times. To continue to Alexandria you will require 1000 food. \n 1. Market\n 2. Continue to Alexandria\n 3. Exit\n)
+        elif count == 1:
+            mssginbab = str(f"You will need 1000 food to continue.\n 1. Market\n 2. Continue to Alexandria\n 3. Exit\n")
+        decisioninbab = inputtemplate(mssginbab, 0, 3)
+        if decisioninbab == 1:
+            consume, string, balls, stele, bare, cumin = marketinbab(consume, string, balls, stele, bare, cumin, callsign)
+        elif decisioninbab == 2:
+            if consume >= 1000:
+                consume = consume -1000
+                return consume, string, balls, stele, bare, cumin
+                break
+            else:
+                print(f"\n You don't have enough food!!")
+        elif decisioninbab == 3:
+            exittemplate()
 
 def main():
     wronginputmessage = str('Please type one of the numbers listed.\n')
