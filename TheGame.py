@@ -187,6 +187,7 @@ def miran(oo, i, ea, eea, aa, ae):
             oo, i, ea, eea, aa = marketinmiran(oo, i, ea, eea, aa, ae)
         elif decisioninmiran == 2:
             if oo >= 1000:
+                oo = oo - 1000
                 return oo, i, ea, eea, aa
                 break
             else:
@@ -214,7 +215,7 @@ def marketinmiran(eatables, thread, shiny, sharp, ornament, un):
 
 def transinmarketm(eat, product, productname, sellprice):
     while True:
-        sellmessage = str(f"How many {productname} would you like to sell? You will get {sellprice} food per unit of silk sold. You currently have {eat} food, and {product} {productname}. You can sell up to 100 units at a time. If you wish to exit, type 101 and 'Enter'.\n")
+        sellmessage = str(f"How many {productname} would you like to sell? You will get {sellprice} food per {productname} sold. You currently have {eat} food, and {product} {productname}. You can sell up to 100 units at a time. If you wish to exit, type 101 and 'Enter'.\n")
         productsellnumber = inputtemplate(sellmessage, 0 , 101)
         if productsellnumber == 101:
             return eat, product
@@ -239,6 +240,7 @@ def purushapura(foo, sils, pea, stc, brc, spc, moi):
             foo, sils, pea, stc, brc, spc = marketinpurushapura(foo, sils, pea, stc, brc, spc, moi)
         elif decisioninpurushapura == 2:
             if foo >= 1750:
+                foo = foo - 1750
                 sils, pea, stc, brc, spc = sils, pea, stc, brc, spc * .9
                 sils, pea, stc, brc, spc = int(sils), int(pea), int(stc), int(brc), int(spc)
                 return foo, sils, pea, stc, brc, spc
@@ -249,7 +251,6 @@ def purushapura(foo, sils, pea, stc, brc, spc, moi):
             exit()
         count = 1
 
-#CHANGE VARIABLE NAMES ADD SPICE CODE  eatables etc.
 def marketinpurushapura( od, sik, pel, stel, bras, spic, mei):
     while True:
         marketinpurumessage = str(f"Welcome, {mei}, to the market! You have {od} food, {sik} units of silk, {pel} bags of pearls, {stel} steel products, {bras} brass products.\n 1. Sell Silk\n 2. Sell Pearls\n 3. Sell Steel Products\n 4. Sell Brass Products\n 5. Buy Spice\n 6. Leave Market\n")
@@ -270,30 +271,44 @@ def marketinpurushapura( od, sik, pel, stel, bras, spic, mei):
 
 def buyspice(dea, yni, pra, tne, cip):
     while True:
-        spicebuymessage = str(f"\nPlease type what you wish to good you wish to exchange for spice. Spice will be valuable. You have {dea} units of silk, {yni} bags of pearls, {pra} steel products, {tne} brass products, and {cip} units of spice.\n 1. Exchange Spice\n 2. Exchange Pearls\n 3. Exchange Steel Products\n 4. Exchange Brass Products\n 5. Return To Main Market\n")
+        spicebuymessage = str(f"\nPlease type what good you wish to exchange for spice. Spice will be valuable. You have {dea} units of silk, {yni} bags of pearls, {pra} steel products, {tne} brass products, and {cip} units of spice.\n 1. Exchange Spice\n 2. Exchange Pearls\n 3. Exchange Steel Products\n 4. Exchange Brass Products\n 5. Return To Main Market\n")
         exchangetype = inputtemplate(spicebuymessage, 0, 5)
         if exchangetype == 1:
-            amountexchange = inputtemplate("How much would you like to exchange? The rate is 4 spice per silk. Enter 101 to exit.\n", 0, 101)
+            amountexchange = inputtemplate("How much would you like to exchange? The rate is 3 spice per silk. Enter 101 to exit.\n", 0, 101)
             if amountexchange != 101:
-                dea = dea - amountexchange
-                cipadded = amountexchange * 4
-                cip = cip + cipadded
+                if dea - amountexchange >= 0:
+                    dea = dea - amountexchange
+                    cipadded = amountexchange * 3
+                    cip = cip + cipadded
+                else:
+                    print(f"\nYou can't afford that!!\n")
         elif exchangetype == 2:
             amountexchange = inputtemplate("How much would you like to exchange? The rate is 2 spice per bag of pearls. Enter 101 to exit.\n", 0, 101)
             if amountexchange != 101:
-                yni = yni - amountexchange
-                cipadded = amountexchange * 2
-                cip = cip + cipadded
+                if yni - amountexchange >= 0:
+                    yni = yni - amountexchange
+                    cipadded = amountexchange * 2
+                    cip = cip + cipadded
+                else:
+                    print(f"\nYou can't afford that!!\n")
         elif exchangetype == 3:
             amountexchange = inputtemplate("How much would you like to exchange? The rate is 1 spice for 1 steel product. Enter 101 to exit.\n", 0, 101)
             if amountexchange != 101:
-                pra = pra - amountexchange
-                cip = cip + amountexchange
+                if pra - amountexchange >= 0:
+                    pra = pra - amountexchange
+                    cip = cip + amountexchange
+                else:
+                    print(f"\nYou can't afford that!!\n")
         elif exchangetype == 4:
-            amountexchange = inputtemplate("How much would you like to exchange? The rate is 1 spice for 1 brass product. Enter 101 to exit.\n", 0, 101)
+            amountexchange = inputtemplate("How much would you like to exchange? The rate is 1 spice for 2 brass product. Enter 101 to exit.\n", 0, 101)
             if amountexchange != 101:
-                tne = tne - amountexchange
-                cip = cip + amountexchange
+                if tne - amountexchange >= 0:
+                    tne = tne - amountexchange
+                    cipadded = amountexchange * .5
+                    cipadded = int(cipadded)
+                    cip = cip + cipadded
+                else:
+                    print(f"\nYou can't afford that!!\n")
         elif exchangetype == 5:
             return dea, yni, pra, tne, cip
             break
@@ -312,6 +327,7 @@ def indias(fo, de, yn, pr, tn, maen):
             fo, de, yn, pr, tn, ci = marketinpurushapura(fo, de, yn, pr, tn, ci, maen)
         elif choiceoncoastin == 2:
             if fo >= 1500:
+                fo = fo - 1500
                 de, yn, pr, tn, ci = de, yn, pr, tn, ci * .9
                 de, yn, pr, tn, ci = int(de), int(yn), int(pr), int(tn), int(ci)
                 return fo, de, yn, pr, tn, ci
@@ -321,6 +337,46 @@ def indias(fo, de, yn, pr, tn, maen):
         elif choiceoncoastin == 3:
             exit()
         count = 1
+
+def babylon(ood, lis, arl, scrft, bcrft, ecips, callsign):
+    count = 0
+    while True:
+        if count == 0:
+            mssginbab = str(f"You have arrived in Babylon. This city has seen the rise and fall of many rulers. From the tyrannical rule of the Kings of Old Babylon (soldiers were not afraid to seize valuables as they saw fit), followed by the Assyrians, followed by the Neo-Babylonians. Each of these nations had their own tax system, but, unlike the civilizations you previously visited, they did little to help the common folk. After the Neo-Babs came the Persian Empire. It was with this empire that there was a tax reform. Taxes were fair and would go towards the betterment of the state. Now that Alexander the Great has swept through, there is some unrest and uncertainty. Little is known about how he plans to govern. Steel will be priced highly in these uncertain times. To continue to Alexandria you will require 1250 food. \n 1. Market\n 2. Continue to Alexandria\n 3. Exit\n)
+        elif count == 1:
+            mssginbab = str(f"You will need 1250 food to continue.\n 1. Market\n 2. Continue to Alexandria\n 3. Exit\n")
+        decisioninbab = inputtemplate(mssginbab, 0, 3)
+        if decisioninbab == 1:
+            ood, lis, arl, scrft, bcrft, ecips = marketinbab(ood, lis, arl, scrft, bcrft, ecips, callsign)
+        elif decisioninbab == 2:
+            if ood >= 1250:
+                ood = ood -1250
+                return ood, lis, arl, scrft, bcrft, ecips
+                break
+            else:
+                print(f"\n You don't have enough food!!")
+        elif decisioninbab == 3:
+            exit()
+
+def marketinbab(oof, kliss, earl, stcrft, brcrft, spces, naam):
+    while True:
+        marketinbabmessage = str(f"Welcome, {naam}, to the market! You have {oof} food, {kliss} units of silk, {earl} bags of pearls, {stcrft} steel products, {brcrft} brass products, and {spces} spice.\n 1. Sell Silk\n 2. Sell Pearls\n 3. Sell Steel Products\n 4. Sell Brass Products\n 5. Sell Spice\n 6. More Info\n 7. Leave Market\n")
+        decisioninmarketinbab = inputtemplate(marketinpbabmessage, 0, 6)
+        if decisioninmarketinbab == 1:
+            oof, kliss = transinmarketm(oof, kliss, 'units of silk', 190)
+        elif decisioninmarketinbab == 2:
+            oof, earl = transinmarketm(oof, earl, 'bags of pearls', 110)
+        elif decisioninmarketinbab == 3:
+            oof, stcrft = transinmarketm(oof, stcrft, 'steel products', 140)
+        elif decisioninmarketinbab == 4:
+            oof, brcrft = transinmarketm(oof, brcrft, 'brass products', 65)
+        elif decisioninmarketinbab == 5:
+            oof, spces = transinmarketm(oof, spces, 'spice', 120)
+        elif decisioninmarketinbab == 6:
+            print(f"Keep in mind, you will want to buy as close as is possible to the exact amount of food you will need. This is your last stop. The backbone of the economy here in Mesopotamia is agricultural. Some key exports are oil, resin, and textiles. Due to a lack of natural rescources, they import raw materials (such as silk!!!) to refine and sell. Steel will hold a higher price.")
+        elif decisioninmarketinbab == 7:
+            return oof, kliss, earl, stcrft, brcrft, spces
+            break
 
 def main():
     wronginputmessage = str('Please type one of the numbers listed.\n')
@@ -336,12 +392,12 @@ def main():
         coins, sil, pearl, steelcraft, brasscraft = lanzhou(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
         food = 0
         food, sil, pearl, steelcraft, brasscraft, spice = indial(food, sil, pearl, steelcraft, brasscraft, name)
-        food, sil, pearl, steelcraft, brasscraft, spice = persial(food, sil, pearl, steelcraft, brasscraft, spice, name)
+        food, sil, pearl, steelcraft, brasscraft, spice = babylon(food, sil, pearl, steelcraft, brasscraft, spice, name)
     elif answer23rdq == 2:
         coins, sil, pearl, steelcraft, brasscraft = nanhal(coins, sil, silkworm, pearl, steelcraft, brasscraft, name)
         food = 0
         food, sil, pearl, steelcraft, brasscraft, spice = indias(food, sil, pearl, steelcraft, brasscraft, name)
-        food, sil, pearl, steelcraft, brasscraft, spice = persias(food, sil, pearl, steelcraft, brasscraft, spice, name)
+        food, sil, pearl, steelcraft, brasscraft, spice = mesos(food, sil, pearl, steelcraft, brasscraft, spice, name)
     return
 
 if __name__ == '__main__':
