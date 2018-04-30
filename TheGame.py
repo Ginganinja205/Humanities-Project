@@ -1,4 +1,4 @@
-exittemplate()#Opening Screen Credits and Stuff Here
+#Opening Screen Credits and Stuff Here
 def beginningcode(wronginputmssg):
     while True:
         playorexit = input("\nWelcome Participant\n Please type '1' to start, '2' to exit, '3' for How To Play, or '4' for credits. Press 'Enter' when you have selected your choice.\n 1. Start\n 2. Exit\n 3. How To Play\n 4. Credits/Citations\n")
@@ -375,7 +375,7 @@ def marketinbab(oof, kliss, earl, stcrft, brcrft, spces, naam):
         elif decisioninmarketinbab == 4:
             oof, brcrft = transinmarketm(oof, brcrft, 'brass products', 65)
         elif decisioninmarketinbab == 5:
-            oof, spces = transinmarketm(oof, spces, 'spice', 120)
+            oof, spces = transinmarketm(oof, spces, 'spice', 85)
         elif decisioninmarketinbab == 6:
             print(f"Keep in mind, you will want to buy as close as is possible to the exact amount of food you will need. This is your last stop. The backbone of the economy in Mesopotamia is agricultural. Some key exports are oil, resin, and textiles. Due to a lack of natural rescources, they import raw materials (such as silk!!!) to refine and sell. Steel will hold a higher price.")
         elif decisioninmarketinbab == 7:
@@ -394,13 +394,23 @@ def mesos(consume, string, balls, stele, bare, cumin, callsign):
             consume, string, balls, stele, bare, cumin = marketinbab(consume, string, balls, stele, bare, cumin, callsign)
         elif decisioninbab == 2:
             if consume >= 1000:
-                consume = consume -1000
+                consume = consume - 1000
                 return consume, string, balls, stele, bare, cumin
                 break
             else:
                 print(f"\n You don't have enough food!!")
         elif decisioninbab == 3:
             exittemplate()
+
+def alexandria(foodss, silkss, pearlss, steelcraftss, brasscraftss, spicess, namess):
+    debens = 0
+    addedsilkd = silkss * 205 * .9
+    addedpearlss = pearlss * 120 * .9
+    addedsteelcraftss = steelcraftss * 120 * .9
+    addedbrasscraftss = brasscraftss * 65 * .9
+    addedspicess = spicess * 100 * .9
+    debens = addedsilkd + addedpearlss + addedspicess + addedbrasscraftss + addedsteelcraftss
+    messageinalex = str(f"You did it!!! You have made to Alexandria. The one in Egypt that is, during his conquest Alexander the Great named 13 cities after himself, and one after his horse. Here in Egypt, there is no standard currency, but there is a standard unit of measurement: the deben. This place has a stable economy and little threat from the outside world so steel is worth little here. This economy is mostly based off of agricultural prosperity. Thre is a strong tax system in place that provides the funds to protect the citizens of this nation, as well as a multitude of public projects. However, before we continue, it is time to play... THE ANCIENT ARTIFACTS BONUS POINTS GAME!!!")
 
 def main():
     wronginputmessage = str('Please type one of the numbers listed.\n')
@@ -422,6 +432,7 @@ def main():
         food = 0
         food, sil, pearl, steelcraft, brasscraft, spice = indias(food, sil, pearl, steelcraft, brasscraft, name)
         food, sil, pearl, steelcraft, brasscraft, spice = mesos(food, sil, pearl, steelcraft, brasscraft, spice, name)
+    alexandria(food, sil, pearl, steelcraft, brasscraft, spice, name)
     return
 
 if __name__ == '__main__':
