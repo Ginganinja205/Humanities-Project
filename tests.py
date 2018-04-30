@@ -140,10 +140,8 @@ def buyspice(dea, yni, pra, tne, cip):
         elif exchangetype == 5:
             return dea, yni, pra, tne, cip
             break
-            
+
 def main():
-    food, sil, pearl, steelcraft, brasscraft, spice = indial(0, 10, 10, 10, 10, 'Henry Lima')
-    print("done test")
-    print(food, sil, pearl, steelcraft, brasscraft, spice)
+
 if __name__ == '__main__':
     main()

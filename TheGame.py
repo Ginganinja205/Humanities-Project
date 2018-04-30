@@ -1,3 +1,8 @@
+#Corrected land up until and including some of purushapura
+
+
+
+
 #Opening Screen Credits and Stuff Here
 def beginningcode(wronginputmssg):
     while True:
@@ -49,7 +54,7 @@ def inputtemplate(message, numberortext, numberofoptions):
 
 def exittemplate():
     areusure = inputtemplate("Are you sure you wish to exit, your progress will not be saved?\n 1. Yes\n 2. No\n", 0, 2)
-    if areusure == 1: exittemplate()
+    if areusure == 1: exit()
 
 #Username, Establishes Base Products Currency, Leads to Market or Cont.s to Journey
 def startingpage():
@@ -165,8 +170,8 @@ def lanzhou(no, kl, mrowkl, lre, lee, ssa, em):
                 print("It looks like someone thought that crime pays. Unfortunately (for you), you have been caught in an attempt to smuggle silkworms to foriengers. You were willing to betray your entire country just to make an extra buck. If this is a surpruise to you, you should have checked the extra information in the marketplace. Tough luck, Goodbye.")
                 exittemplate()
             else:
-                no, kl lre, lee, ssa = no, kl, lre, lee, ssa * .9
-                no, kl, mrowkl, lre, lee, ssa = int(no), int(kl), int(lre), int(lee), int(ssa)
+                no, kl, lre, lee, ssa = no, kl, lre, lee, ssa * .9
+                no, kl, mrowkl, lre, lee, ssa = int(no), int(kl), int(mrowkl), int(lre), int(lee), int(ssa)
                 return no, kl, lre, lee, ssa
                 break
         elif marketorleavech == 3:
@@ -271,11 +276,11 @@ def marketinpurushapura( od, sik, pel, stel, bras, spic, mei):
             sik, pel, stel, bras, spic = buyspice(sik, pel, stel, bras, spic)
         elif decisioninmarketinpuru == 6:
             break
-            return od, sik, pel, stel, bras, spic
+    return od, sik, pel, stel, bras, spic
 
 def buyspice(dea, yni, pra, tne, cip):
     while True:
-        spicebuymessage = str(f"\nPlease type what good you wish to exchange for spice. Spice will be valuable. You have {dea} units of silk, {yni} bags of pearls, {pra} steel products, {tne} brass products, and {cip} units of spice.\n 1. Exchange Spice\n 2. Exchange Pearls\n 3. Exchange Steel Products\n 4. Exchange Brass Products\n 5. Return To Main Market\n")
+        spicebuymessage = str(f"\nPlease type what good you wish to exchange for spice. Spice will be valuable. You have {dea} units of silk, {yni} bags of pearls, {pra} steel products, {tne} brass products, and {cip} units of spice.\n 1. Exchange Silk\n 2. Exchange Pearls\n 3. Exchange Steel Products\n 4. Exchange Brass Products\n 5. Return To Main Market\n")
         exchangetype = inputtemplate(spicebuymessage, 0, 5)
         if exchangetype == 1:
             amountexchange = inputtemplate("How much would you like to exchange? The rate is 3 spice per silk. Enter 101 to exit.\n", 0, 101)
@@ -323,7 +328,7 @@ def indias(fo, de, yn, pr, tn, maen):
     de, yn, pr, tn = int(de), int(yn), int(pr), int(tn)
     while True:
         if count == 0:
-            messageoncoastin = str(f"\nCongratulations, {moi}. You have safely traveled from Nanhal to a small town on the coast of India. You would have continued, but you are out of food. In order to continue to your next destination, you must stock up. The local tradesmen are eager to see what you have to offer in return for food. During this period, India's economy is mostly based off of agriculture (like most civilizations) and craftspeople. If you wish to continue you require 1500 food. You are in South India which is currently ruled by Chandragupta Maurya. Maurya has put into place a tax system (yes, it does apply to you) and made safe, well-constructed roads. In fact, there is even a government coin. While here, you can buy spices to sell in foreign nations. People are willing to pay highly for silk; silk textiles are one of the main exports. Oh! By the way, you lost ten percent of what you have. Go! Trade!\n 1. Market\n 2. Continue Journey\n 3. Exit\n")
+            messageoncoastin = str(f"\nCongratulations, {maen}. You have safely traveled from Nanhal to a small town on the coast of India. You would have continued, but you are out of food. In order to continue to your next destination, you must stock up. The local tradesmen are eager to see what you have to offer in return for food. During this period, India's economy is mostly based off of agriculture (like most civilizations) and craftspeople. If you wish to continue you require 1500 food. You are in South India which is currently ruled by Chandragupta Maurya. Maurya has put into place a tax system (yes, it does apply to you) and made safe, well-constructed roads. In fact, there is even a government coin. While here, you can buy spices to sell in foreign nations. People are willing to pay highly for silk; silk textiles are one of the main exports. Oh! By the way, you lost ten percent of what you have. Go! Trade!\n 1. Market\n 2. Continue Journey\n 3. Exit\n")
         elif count == 1:
             messageoncoastin = str(f"\nYou need 1500 food to continue.\n 1. Market\n 2. Continue Journey\n 3. Exit\n")
         choiceoncoastin = inputtemplate(messageoncoastin, 0, 3)
@@ -346,7 +351,7 @@ def babylon(ood, lis, arl, scrft, bcrft, ecips, callsign):
     count = 0
     while True:
         if count == 0:
-            mssginbab = str(f"You have arrived in Babylon. This city has seen the rise and fall of many rulers. From the tyrannical rule of the Kings of Old Babylon (soldiers were not afraid to seize valuables as they saw fit), followed by the Assyrians, followed by the Neo-Babylonians. Each of these nations had their own tax system, but, unlike the civilizations you previously visited, they did little to help the common folk. After the Neo-Babs came the Persian Empire. It was with this empire that there was a tax reform. Taxes were fair and would go towards the betterment of the state. Now that Alexander the Great has swept through, there is some unrest and uncertainty. Little is known about how he plans to govern. Steel will be priced highly in these uncertain times. To continue to Alexandria you will require 1250 food. \n 1. Market\n 2. Continue to Alexandria\n 3. Exit\n)
+            mssginbab = str(f"You have arrived in Babylon. This city has seen the rise and fall of many rulers. From the tyrannical rule of the Kings of Old Babylon (soldiers were not afraid to seize valuables as they saw fit), followed by the Assyrians, followed by the Neo-Babylonians. Each of these nations had their own tax system, but, unlike the civilizations you previously visited, they did little to help the common folk. After the Neo-Babs came the Persian Empire. It was with this empire that there was a tax reform. Taxes were fair and would go towards the betterment of the state. Now that Alexander the Great has swept through, there is some unrest and uncertainty. Little is known about how he plans to govern. Steel will be priced highly in these uncertain times. To continue to Alexandria you will require 1250 food. \n 1. Market\n 2. Continue to Alexandria\n 3. Exit\n")
         elif count == 1:
             mssginbab = str(f"You will need 1250 food to continue.\n 1. Market\n 2. Continue to Alexandria\n 3. Exit\n")
         decisioninbab = inputtemplate(mssginbab, 0, 3)
@@ -386,7 +391,7 @@ def mesos(consume, string, balls, stele, bare, cumin, callsign):
     count = 0
     while True:
         if count == 0:
-            mssginbab = str(f"You have arrived in Tauri. This little known city has seen the rise and fall of many rulers. From the tyrannical rule of the Kings of Old Babylon (soldiers were not afraid to seize valuables as they saw fit), followed by the Assyrians, followed by the Neo-Babylonians. Each of these nations had their own tax system, but, unlike the civilizations you previously visited, they did little to help the common folk. After the Neo-Babs came the Persian Empire. It was with this empire that there was a tax reform. Taxes were fair and would go towards the betterment of the state. Now that Alexander the Great has swept through, there is some unrest and uncertainty. Little is known about how he plans to govern. Steel will be priced highly in these uncertain times. To continue to Alexandria you will require 1000 food. \n 1. Market\n 2. Continue to Alexandria\n 3. Exit\n)
+            mssginbab = str(f"You have arrived in Tauri. This little known city has seen the rise and fall of many rulers. From the tyrannical rule of the Kings of Old Babylon (soldiers were not afraid to seize valuables as they saw fit), followed by the Assyrians, followed by the Neo-Babylonians. Each of these nations had their own tax system, but, unlike the civilizations you previously visited, they did little to help the common folk. After the Neo-Babs came the Persian Empire. It was with this empire that there was a tax reform. Taxes were fair and would go towards the betterment of the state. Now that Alexander the Great has swept through, there is some unrest and uncertainty. Little is known about how he plans to govern. Steel will be priced highly in these uncertain times. To continue to Alexandria you will require 1000 food. \n 1. Market\n 2. Continue to Alexandria\n 3. Exit\n")
         elif count == 1:
             mssginbab = str(f"You will need 1000 food to continue.\n 1. Market\n 2. Continue to Alexandria\n 3. Exit\n")
         decisioninbab = inputtemplate(mssginbab, 0, 3)
