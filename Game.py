@@ -450,6 +450,7 @@ def main():
     deb = alexandria(sil, pearl, steelcraft, brasscraft, spice, name)
     deb = jeopardy(deb)
     mssgexit = str(f"\nPlease call Henry Lima over to record your score. Your final score was a whopping {deb}.\n")
+    print(mssggexits)
     return
 
 if __name__ == '__main__':
