@@ -1,7 +1,3 @@
-#Corrected land up until and including some of purushapura
-
-
-
 
 #Opening Screen Credits and Stuff Here
 def beginningcode(wronginputmssg):
@@ -38,20 +34,21 @@ def Citations():
 
 #This function is for the multiple times input will have to be vetted. For second argument put 0 for numbers and anythingelse for text.
 def inputtemplate(message, numberortext, numberofoptions):
-    theinput = input(message)
-    if numberortext == 0:
-        try:
-            thenumberinput = int(theinput)
-        except:
-            print(str('\nPlease type one of the numbers listed.\n'))
-            return 0
-        if numberofoptions < thenumberinput or thenumberinput < 1:
-            print(str('\nPlease type one of the numbers listed.\n'))
-            return 0
+    while True:
+        theinput = input(message)
+        if numberortext == 0:
+            try:
+                thenumberinput = int(theinput)
+            except:
+                print(str('\nPlease type one of the numbers listed.\n'))
+            if numberofoptions < thenumberinput or thenumberinput < 1:
+                print(str('\nPlease type one of the numbers listed.\n'))
+            else:
+                return thenumberinput
+                break
         else:
-            return thenumberinput
-    else:
-        return str(theinput)
+            return str(theinput)
+            break
 
 def exittemplate():
     areusure = inputtemplate("Are you sure you wish to exit, your progress will not be saved?\n 1. Yes\n 2. No\n", 0, 2)
@@ -108,7 +105,7 @@ def markettrans(product, price, amountotal, Cns):
                 Cns = Cns - (price * unitsofs)
                 return amountotal, Cns
             else:
-                print("You can't afford that!!")
+                print("\nYou can't afford that!!")
 
 #By land or sea
 def beginjourney(uname):
@@ -232,7 +229,7 @@ def transinmarketm(eat, product, productname, sellprice):
             break
         else:
             if productsellnumber > product:
-                print("You don't have enough!!\n")
+                print("\nYou don't have enough!!\n")
             else:
                 product = product - productsellnumber
                 eatgained = productsellnumber * sellprice
@@ -421,6 +418,21 @@ def alexandria(silkss, pearlss, steelcraftss, brasscraftss, spicess, namess):
     print(messageinalex)
     return debens
 
+def jeopardy(mula):
+    q1 = inputtemplate("This artifact is early proof of international trade between Mesopotamia and others. It is adorned with lapis lazuli, ornamental shells, and redstone, none of which are found in Mesopotamia. This artifact also depicts the king being waited upon by the other classes, being brought gifts of agricultural produce and textiles.\n 1. What is the Declaration of Independence?\n 2. What is the Standard of Ur?\n 3. What is the Stele of Naram-Sin?\n 4. What is the Great Edict of Horemheb?", 0, 4)
+    if q1 == 1 or 3 or 4:
+        print("\nSorry, wrong answer. The correct answer is '2'.\n")
+    else:
+        mula = mula + 300
+        print("Correct, you have recieved 300 extra deben!!!")
+    q2 = inputtemplate("This artifact is crucial to the developement of economic rights. It is one of the earliest examples of a welfare system, and insurance. It dictates that robbed individuals are tax exempt. It gives food to the hungry in times of famine. It even provides jobs to those who are out of work.\n 1. What is the Great Edict of Horemheb?\n 2. What is the Charter of Tutankhamen?\n 3. What is the Stele of Naram-Sin?\n 4. What is the Standard of Ur?")
+    if q2 == 2 or 3 or 4:
+        print("\nSorry, wrong answer. The correct answer is '2'.\n")
+    else:
+        mula = mula + 300
+        print("Correct, you have recieved 300 extra deben!!!")
+    return mula
+
 def main():
     def main():
     wronginputmessage = str('Please type one of the numbers listed.\n')
@@ -442,8 +454,9 @@ def main():
         food = 0
         food, sil, pearl, steelcraft, brasscraft, spice = indias(food, sil, pearl, steelcraft, brasscraft, name)
         food, sil, pearl, steelcraft, brasscraft, spice = mesos(food, sil, pearl, steelcraft, brasscraft, spice, name)
-    alexandria(food, sil, pearl, steelcraft, brasscraft, spice, name)
-
+    deb = alexandria(food, sil, pearl, steelcraft, brasscraft, spice, name)
+    deb = jeopardy(deb)
+    
     return
 
 if __name__ == '__main__':
