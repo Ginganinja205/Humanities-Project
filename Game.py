@@ -414,27 +414,25 @@ def alexandria(silkss, pearlss, steelcraftss, brasscraftss, spicess, namess):
     addedbrasscraftss = brasscraftss * 65 * .9
     addedspicess = spicess * 100 * .9
     debens = addedsilkd + addedpearlss + addedspicess + addedbrasscraftss + addedsteelcraftss
-    messageinalex = str(f"You did it!!! You have made to Alexandria. The one in Egypt that is, during his conquest Alexander the Great named 13 cities after himself, and one after his horse. Here in Egypt, there is no standard currency, but there is a standard unit of measurement: the deben. This standard unit lubricates trade, and increases prosperity. This place has a stable economy and little threat from the outside world so steel is worth little here. This economy is mostly based off of agricultural prosperity. Thre is a strong tax system in place that provides the funds to protect the citizens of this nation, as well as a multitude of public projects. However, before we continue, it is time to play... THE ANCIENT ARTIFACTS BONUS POINTS GAME!!!")
-    print(messageinalex)
+    messageinalex = inputtemplate(f"You did it!!! You have made to Alexandria. The one in Egypt that is, during his conquest Alexander the Great named 13 cities after himself, and one after his horse. Here in Egypt, there is no standard currency, but there is a standard unit of measurement: the deben. This standard unit lubricates trade, and increases prosperity. This place has a stable economy and little threat from the outside world so steel is worth little here. This economy is mostly based off of agricultural prosperity. Thre is a strong tax system in place that provides the funds to protect the citizens of this nation, as well as a multitude of public projects. However, before we continue, it is time to play... THE ANCIENT ARTIFACTS BONUS POINTS GAME!!! Please type anything to move on.", 1, 120)
     return debens
 
 def jeopardy(mula):
-    q1 = inputtemplate("This artifact is early proof of international trade between Mesopotamia and others. It is adorned with lapis lazuli, ornamental shells, and redstone, none of which are found in Mesopotamia. This artifact also depicts the king being waited upon by the other classes, being brought gifts of agricultural produce and textiles.\n 1. What is the Declaration of Independence?\n 2. What is the Standard of Ur?\n 3. What is the Stele of Naram-Sin?\n 4. What is the Great Edict of Horemheb?", 0, 4)
+    q1 = inputtemplate("This artifact is early proof of international trade between Mesopotamia and others. It is adorned with lapis lazuli, ornamental shells, and redstone, none of which are found in Mesopotamia. This artifact also depicts the king being waited upon by the other classes, being brought gifts of agricultural produce and textiles.\n 1. What is the Declaration of Independence?\n 2. What is the Standard of Ur?\n 3. What is the Stele of Naram-Sin?\n 4. What is the Great Edict of Horemheb?\n", 0, 4)
     if q1 == 1 or 3 or 4:
         print("\nSorry, wrong answer. The correct answer is '2'.\n")
     else:
         mula = mula + 300
-        print("Correct, you have recieved 300 extra deben!!!")
-    q2 = inputtemplate("This artifact is crucial to the developement of economic rights. It is one of the earliest examples of a welfare system, and insurance. It dictates that robbed individuals are tax exempt. It gives food to the hungry in times of famine. It even provides jobs to those who are out of work.\n 1. What is the Great Edict of Horemheb?\n 2. What is the Charter of Tutankhamen?\n 3. What is the Stele of Naram-Sin?\n 4. What is the Standard of Ur?")
+        print("\nCorrect, you have recieved 300 extra deben!!!\n")
+    q2 = inputtemplate("\nThis artifact is crucial to the developement of economic rights. It is one of the earliest examples of a welfare system, and insurance. It dictates that robbed individuals are tax exempt. It gives food to the hungry in times of famine. It even provides jobs to those who are out of work.\n 1. What is the Great Edict of Horemheb?\n 2. What is the Charter of Tutankhamen?\n 3. What is the Stele of Naram-Sin?\n 4. What is the Standard of Ur?\n", 0 , 4)
     if q2 == 2 or 3 or 4:
         print("\nSorry, wrong answer. The correct answer is '2'.\n")
     else:
         mula = mula + 300
-        print("Correct, you have recieved 300 extra deben!!!")
+        print("\nCorrect, you have recieved 300 extra deben!!!\n")
     return mula
 
 def main():
-    def main():
     wronginputmessage = str('Please type one of the numbers listed.\n')
     beginningcode(wronginputmessage)
     name, coins, sil, silkworm, pearl, steelcraft, brasscraft, answer22ndq = startingpage()
@@ -454,9 +452,9 @@ def main():
         food = 0
         food, sil, pearl, steelcraft, brasscraft, spice = indias(food, sil, pearl, steelcraft, brasscraft, name)
         food, sil, pearl, steelcraft, brasscraft, spice = mesos(food, sil, pearl, steelcraft, brasscraft, spice, name)
-    deb = alexandria(food, sil, pearl, steelcraft, brasscraft, spice, name)
+    deb = alexandria(sil, pearl, steelcraft, brasscraft, spice, name)
     deb = jeopardy(deb)
-    
+
     return
 
 if __name__ == '__main__':
