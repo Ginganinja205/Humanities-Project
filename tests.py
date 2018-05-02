@@ -2,7 +2,7 @@
 #Opening Screen Credits and Stuff Here
 def beginningcode(wronginputmssg):
     while True:
-        playorexit = input("\nWelcome Participant\n Please type '1' to start, '2' to exit, '3' for How To Play, or '4' for credits. Press 'Enter' when you have selected your choice.\n 1. Start\n 2. Exit\n 3. How To Play\n 4. Credits/Citations\n")
+        playorexit = input("\nWelcome Participant\n Please type '1' to start, '2' to exit, or '3' for How To Play. Press 'Enter' when you have selected your choice.\n 1. Start\n 2. Exit\n 3. How To Play\n 4. Credits/Citations\n")
         try:
             choice1 = int(playorexit)
         except:
@@ -14,9 +14,6 @@ def beginningcode(wronginputmssg):
             exittemplate()
         elif choice1 == 3:
             Instructions(wronginputmssg)
-            break
-        elif choice1 == 4:
-            Citations()
             break
         else:
             print('wronginputmssg')
@@ -40,7 +37,7 @@ def inputtemplate(message, numberortext, numberofoptions):
             try:
                 thenumberinput = int(theinput)
             except:
-                print(str('\nPlease type one of the numbers listed.\n'))
+                thenumberinput = 0
             if numberofoptions < thenumberinput or thenumberinput < 1:
                 print(str('\nPlease type one of the numbers listed.\n'))
             else:
@@ -419,17 +416,17 @@ def alexandria(silkss, pearlss, steelcraftss, brasscraftss, spicess, namess):
 
 def jeopardy(mula):
     q1 = inputtemplate("This artifact is early proof of international trade between Mesopotamia and others. It is adorned with lapis lazuli, ornamental shells, and redstone, none of which are found in Mesopotamia. This artifact also depicts the king being waited upon by the other classes, being brought gifts of agricultural produce and textiles.\n 1. What is the Declaration of Independence?\n 2. What is the Standard of Ur?\n 3. What is the Stele of Naram-Sin?\n 4. What is the Great Edict of Horemheb?\n", 0, 4)
-    if q1 == 1 or 3 or 4:
-        print("\nSorry, wrong answer. The correct answer is '2'.\n")
-    else:
+    if q1 == 2:
         mula = mula + 300
         print("\nCorrect, you have recieved 300 extra deben!!!\n")
+    else:
+        print("\nSorry, wrong answer. The correct answer is '2'.\n")
     q2 = inputtemplate("\nThis artifact is crucial to the developement of economic rights. It is one of the earliest examples of a welfare system, and insurance. It dictates that robbed individuals are tax exempt. It gives food to the hungry in times of famine. It even provides jobs to those who are out of work.\n 1. What is the Great Edict of Horemheb?\n 2. What is the Charter of Tutankhamen?\n 3. What is the Stele of Naram-Sin?\n 4. What is the Standard of Ur?\n", 0 , 4)
-    if q2 == 2 or 3 or 4:
-        print("\nSorry, wrong answer. The correct answer is '2'.\n")
-    else:
+    if q2 == 1:
         mula = mula + 300
         print("\nCorrect, you have recieved 300 extra deben!!!\n")
+    else:
+        print("\nSorry, wrong answer. The correct answer is '1'.\n")
     return mula
 
 def main():
