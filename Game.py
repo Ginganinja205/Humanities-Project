@@ -2,7 +2,7 @@
 #Opening Screen Credits and Stuff Here
 def beginningcode(wronginputmssg):
     while True:
-        playorexit = input("\nWelcome Participant\n Please type '1' to start, '2' to exit, or '3' for How To Play. Press 'Enter' when you have selected your choice.\n 1. Start\n 2. Exit\n 3. How To Play\n 4. Credits/Citations\n")
+        playorexit = input("\nWelcome Participant\n Please type '1' to start, '2' to exit, or '3' for How To Play. Press 'Enter' when you have selected your choice.\n 1. Start\n 2. Exit\n 3. How To Play\n")
         try:
             choice1 = int(playorexit)
         except:
@@ -320,8 +320,6 @@ def buyspice(dea, yni, pra, tne, cip):
 def indias(fo, de, yn, pr, tn, maen):
     ci = 0
     count = 0
-    de, yn, pr, tn = de * .9, yn * .9, pr * .9, tn * .9
-    de, yn, pr, tn = int(de), int(yn), int(pr), int(tn)
     while True:
         if count == 0:
             messageoncoastin = str(f"\nCongratulations, {maen}. You have safely traveled from Nanhal to a small town on the coast of India. You would have continued, but you are out of food. In order to continue to your next destination, you must stock up. The local tradesmen are eager to see what you have to offer in return for food. During this period, India's economy is mostly based off of agriculture (like most civilizations) and the refinement of raw materials. If you wish to continue you require 1500 food. You are in South India which is currently ruled by Chandragupta Maurya. Maurya has put into place a tax system (yes, it does apply to you) and made safe, well-constructed roads. In fact, there is even a government coin. The use of this coin has promoted growth in the middle class. While here, you can buy spices to sell in foreign nations. People are willing to pay highly for silk; silk textiles are one of the main exports. Oh! By the way, you lost ten percent of what you have. Go! Trade!\n 1. Market\n 2. Continue Journey\n 3. Exit\n")
