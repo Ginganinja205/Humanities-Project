@@ -1,22 +1,22 @@
 
 #Opening Screen Credits and Stuff Here
-def beginningcode(wronginputmssg):
+def beginningcode(wronginputmessage):
     while True:
         playorexit = input("\nWelcome Participant\n Please type '1' to start, '2' to exit, or '3' for How To Play. Press 'Enter' when you have selected your choice.\n 1. Start\n 2. Exit\n 3. How To Play\n 4. Credits/Citations\n")
         try:
             choice1 = int(playorexit)
         except:
-            print(wronginputmssg)
+            print(wronginputmessage)
             continue
         if choice1 == 1:
             break
         elif choice1 == 2:
             exittemplate()
         elif choice1 == 3:
-            Instructions(wronginputmssg)
+            Instructions(wronginputmessage)
             break
         else:
-            print('wronginputmssg')
+            print('wronginputmessage')
 
 #Gives User Initial Guidance
 def Instructions(wronginput):

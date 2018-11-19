@@ -1,22 +1,22 @@
 
 #Opening Screen Credits and Stuff Here
-def beginningcode(wronginputmssg):
+def beginningcode(wronginputmessage):
     while True:
         playorexit = input("\nWelcome Participant\n Please type '1' to start, '2' to exit, or '3' for How To Play. Press 'Enter' when you have selected your choice.\n 1. Start\n 2. Exit\n 3. How To Play\n")
         try:
             choice1 = int(playorexit)
         except:
-            print(wronginputmssg)
+            print(wronginputmessage)
             continue
         if choice1 == 1:
             break
         elif choice1 == 2:
             exittemplate()
         elif choice1 == 3:
-            Instructions(wronginputmssg)
+            Instructions(wronginputmessage)
             break
         else:
-            print('wronginputmssg')
+            print(wronginputmessage)
 
 #Gives User Initial Guidance
 def Instructions(wronginput):
@@ -413,7 +413,7 @@ def alexandria(silkss, pearlss, steelcraftss, brasscraftss, spicess, namess):
     return debens
 
 def jeopardy(mula):
-    q1 = inputtemplate("This artifact is early proof of international trade between Mesopotamia and others. It is adorned with lapis lazuli, ornamental shells, and redstone, none of which are found in Mesopotamia. This artifact also depicts the king being waited upon by the other classes, being brought gifts of agricultural produce and textiles.\n 1. What is the Declaration of Independence?\n 2. What is the Standard of Ur?\n 3. What is the Stele of Naram-Sin?\n 4. What is the Great Edict of Horemheb?\n", 0, 4)
+    q1 = inputtemplate("\nThis artifact is early proof of international trade between Mesopotamia and others. It is adorned with lapis lazuli, ornamental shells, and redstone, none of which are found in Mesopotamia. This artifact also depicts the king being waited upon by the other classes, being brought gifts of agricultural produce and textiles.\n 1. What is the Declaration of Independence?\n 2. What is the Standard of Ur?\n 3. What is the Stele of Naram-Sin?\n 4. What is the Great Edict of Horemheb?\n", 0, 4)
     if q1 == 2:
         mula = mula + 300
         print("\nCorrect, you have recieved 300 extra deben!!!\n")
